@@ -18,5 +18,6 @@ var group__syscall__macros =
     [ "CY_P64_INVALID_ADDR_OUT_OF_RANGE", "group__syscall__macros.html#ga69f861cdfde48547cd2017c47853748c", null ],
     [ "CY_P64_INVALID_MEM_ALLOC", "group__syscall__macros.html#ga5cb4b50040558663e589f060882d2e57", null ],
     [ "CY_P64_INVALID_TIMEOUT", "group__syscall__macros.html#ga292282e0f31ebb45dbc1850578e57c51", null ],
-    [ "CY_P64_INVALID_OUT_PAR", "group__syscall__macros.html#ga8b2203e5564235fba5c2d6b73ce0726f", null ]
+    [ "CY_P64_INVALID_OUT_PAR", "group__syscall__macros.html#ga8b2203e5564235fba5c2d6b73ce0726f", null ],
+    [ "CY_P64_INVALID_OPCODE", "group__syscall__macros.html#gab24eec7b95c12ac6b1db9a9d2d297fdb", null ]
 ];

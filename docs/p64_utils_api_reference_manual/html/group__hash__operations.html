@@ -105,13 +105,19 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga7aab7208c3eaeead5155d0a5f8d779c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash__operations.html#ga7aab7208c3eaeead5155d0a5f8d779c1">cy_p64_psa_hash_setup</a> (<a class="el" href="group__hash__operations.html#gaaaafb934bf6c27d819619ead27f547da">cy_p64_psa_hash_operation_t</a> *operation, <a class="el" href="group__crypto__types.html#gaacbbf49e9343ccc308acc8142183418d">cy_p64_psa_algorithm_t</a> alg)</td></tr>
+<tr class="memitem:gad9cd47b7439498cfa87b916854707959"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__psacrypto__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash__operations.html#gad9cd47b7439498cfa87b916854707959">cy_p64_psa_sign_hash</a> (<a class="el" href="group__import__export.html#ga9ab16c7405b7975390450a98240611d2">cy_p64_psa_key_handle_t</a> handle, <a class="el" href="group__crypto__types.html#gaacbbf49e9343ccc308acc8142183418d">cy_p64_psa_algorithm_t</a> alg, const uint8_t *hash, size_t hash_length, const uint8_t *signature, size_t signature_size, size_t *signature_length)</td></tr>
+<tr class="memdesc:gad9cd47b7439498cfa87b916854707959"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signs a hash or short message with a private key.  <a href="#gad9cd47b7439498cfa87b916854707959">More...</a><br /></td></tr>
+<tr class="separator:gad9cd47b7439498cfa87b916854707959"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2142e86841ba63231b5737be452cb938"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__psacrypto__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash__operations.html#ga2142e86841ba63231b5737be452cb938">cy_p64_psa_verify_hash</a> (<a class="el" href="group__import__export.html#ga9ab16c7405b7975390450a98240611d2">cy_p64_psa_key_handle_t</a> handle, <a class="el" href="group__crypto__types.html#gaacbbf49e9343ccc308acc8142183418d">cy_p64_psa_algorithm_t</a> alg, const uint8_t *hash, size_t hash_length, const uint8_t *signature, size_t signature_length)</td></tr>
+<tr class="memdesc:ga2142e86841ba63231b5737be452cb938"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifies the signature of a hash or short message using a public key.  <a href="#ga2142e86841ba63231b5737be452cb938">More...</a><br /></td></tr>
+<tr class="separator:ga2142e86841ba63231b5737be452cb938"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7aab7208c3eaeead5155d0a5f8d779c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__psacrypto__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash__operations.html#ga7aab7208c3eaeead5155d0a5f8d779c1">cy_p64_psa_hash_setup</a> (<a class="el" href="group__hash__operations.html#gaaaafb934bf6c27d819619ead27f547da">cy_p64_psa_hash_operation_t</a> *operation, <a class="el" href="group__crypto__types.html#gaacbbf49e9343ccc308acc8142183418d">cy_p64_psa_algorithm_t</a> alg)</td></tr>
 <tr class="memdesc:ga7aab7208c3eaeead5155d0a5f8d779c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up a multipart hash operation.  <a href="#ga7aab7208c3eaeead5155d0a5f8d779c1">More...</a><br /></td></tr>
 <tr class="separator:ga7aab7208c3eaeead5155d0a5f8d779c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadaf3123ca1340ae0d0684d770d4ab301"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash__operations.html#gadaf3123ca1340ae0d0684d770d4ab301">cy_p64_psa_hash_update</a> (<a class="el" href="group__hash__operations.html#gaaaafb934bf6c27d819619ead27f547da">cy_p64_psa_hash_operation_t</a> *operation, const uint8_t *input, size_t input_length)</td></tr>
+<tr class="memitem:gadaf3123ca1340ae0d0684d770d4ab301"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__psacrypto__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash__operations.html#gadaf3123ca1340ae0d0684d770d4ab301">cy_p64_psa_hash_update</a> (<a class="el" href="group__hash__operations.html#gaaaafb934bf6c27d819619ead27f547da">cy_p64_psa_hash_operation_t</a> *operation, const uint8_t *input, size_t input_length)</td></tr>
 <tr class="memdesc:gadaf3123ca1340ae0d0684d770d4ab301"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a message fragment to a multipart hash operation.  <a href="#gadaf3123ca1340ae0d0684d770d4ab301">More...</a><br /></td></tr>
 <tr class="separator:gadaf3123ca1340ae0d0684d770d4ab301"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga56ba6d302cc0040c03362f7edffb12e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash__operations.html#ga56ba6d302cc0040c03362f7edffb12e0">cy_p64_psa_hash_finish</a> (<a class="el" href="group__hash__operations.html#gaaaafb934bf6c27d819619ead27f547da">cy_p64_psa_hash_operation_t</a> *operation, uint8_t *hash, size_t hash_size, size_t *hash_length)</td></tr>
+<tr class="memitem:ga56ba6d302cc0040c03362f7edffb12e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__psacrypto__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash__operations.html#ga56ba6d302cc0040c03362f7edffb12e0">cy_p64_psa_hash_finish</a> (<a class="el" href="group__hash__operations.html#gaaaafb934bf6c27d819619ead27f547da">cy_p64_psa_hash_operation_t</a> *operation, uint8_t *hash, size_t hash_size, size_t *hash_length)</td></tr>
 <tr class="memdesc:ga56ba6d302cc0040c03362f7edffb12e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finishes the calculation of the hash of a message.  <a href="#ga56ba6d302cc0040c03362f7edffb12e0">More...</a><br /></td></tr>
 <tr class="separator:ga56ba6d302cc0040c03362f7edffb12e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab6df21ee562c18ba9fd0c8e7d8c046ae"><td class="memItemLeft" align="right" valign="top"><a id="gab6df21ee562c18ba9fd0c8e7d8c046ae"></a>
@@ -138,6 +144,180 @@ static struct cy_p64_psa_hash_operation_s&#160;</td><td class="memItemRight" val
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="gad9cd47b7439498cfa87b916854707959"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad9cd47b7439498cfa87b916854707959">&#9670;&nbsp;</a></span>cy_p64_psa_sign_hash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__psacrypto__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a> cy_p64_psa_sign_hash </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__import__export.html#ga9ab16c7405b7975390450a98240611d2">cy_p64_psa_key_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__crypto__types.html#gaacbbf49e9343ccc308acc8142183418d">cy_p64_psa_algorithm_t</a>&#160;</td>
+          <td class="paramname"><em>alg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>hash</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>hash_length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>signature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>signature_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>signature_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Signs a hash or short message with a private key. </p>
+<p>Note that to perform a hash-and-sign signature algorithm, you must first calculate the hash by calling <a class="el" href="group__hash__operations.html#ga7aab7208c3eaeead5155d0a5f8d779c1" title="Sets up a multipart hash operation. ">cy_p64_psa_hash_setup()</a>, <a class="el" href="group__hash__operations.html#gadaf3123ca1340ae0d0684d770d4ab301" title="Adds a message fragment to a multipart hash operation. ">cy_p64_psa_hash_update()</a> and <a class="el" href="group__hash__operations.html#ga56ba6d302cc0040c03362f7edffb12e0" title="Finishes the calculation of the hash of a message. ">cy_p64_psa_hash_finish()</a>. Then pass the resulting hash as the <code>hash</code> parameter to this function. You can use <a class="el" href="group__crypto__types.html#ga70f316b9f0ebb33fbd1f10af45ae45e6" title="Get the hash used by a hash-and-sign signature algorithm. ">CY_P64_PSA_ALG_SIGN_GET_HASH</a>(<code>alg</code>) to determine the hash algorithm to use.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">handle</td><td>Handle to the key to use for the operation. It must be an asymmetric key pair. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">alg</td><td>A signature algorithm that is compatible with the type of <code>handle</code>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">hash</td><td>The hash or message to sign. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">hash_length</td><td>Size of the <code>hash</code> buffer in bytes. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">signature</td><td>Buffer where the signature is to be written. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">signature_size</td><td>Size of the <code>signature</code> buffer in bytes. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">signature_length</td><td>On success, the number of bytes that make up the returned signature value.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gabf57808e9787a7f482bdfc8a1b377685" title="The action was completed successfully. ">CY_P64_PSA_SUCCESS</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga179d52d2be9a5dcd9c1f3dc71f2b71a5" title="The key handle is not valid. ">CY_P64_PSA_ERROR_INVALID_HANDLE</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga489bed3982ecce165e0524e5debb9fd0" title="The requested action is denied by a policy. ">CY_P64_PSA_ERROR_NOT_PERMITTED</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga0a9809dee3cc1aa571a472880be73201" title="The output buffer is too small. ">CY_P64_PSA_ERROR_BUFFER_TOO_SMALL</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga0acb01b82422b2aef20c543f38622bf2" title="The requested operation or a parameter is not supported by this implementation. ">CY_P64_PSA_ERROR_NOT_SUPPORTED</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga1c798809ceb7c9e0fb4da0c2adfdd34c" title="The parameters passed to the function are invalid. ">CY_P64_PSA_ERROR_INVALID_ARGUMENT</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gaa209f7289e4f7ccf07c693e99638e0c3" title="There is not enough runtime memory. ">CY_P64_PSA_ERROR_INSUFFICIENT_MEMORY</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga90493ef15f5b8e005f8d9ec1cf5d28a2" title="There was a communication failure inside the implementation. ">CY_P64_PSA_ERROR_COMMUNICATION_FAILURE</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gaa48736089fd7ef40a370948e6e2160da" title="A hardware failure was detected. ">CY_P64_PSA_ERROR_HARDWARE_FAILURE</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gaee7005bec37e7c8b61cf07800c8252ff" title="A tampering attempt was detected. ">CY_P64_PSA_ERROR_CORRUPTION_DETECTED</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga4968b5ad5c87add717f57c5e018cd4e5" title="There was a storage failure that may have led to data loss. ">CY_P64_PSA_ERROR_STORAGE_FAILURE</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga1cb05698d52a61c151eda07c94bc7111" title="There is not enough entropy to generate random data needed for the requested action. ">CY_P64_PSA_ERROR_INSUFFICIENT_ENTROPY</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gae5c7844defdf120d28efb745183538b9" title="The requested action cannot be performed in the current state. ">CY_P64_PSA_ERROR_BAD_STATE</a></td><td>It is implementation-dependent whether initialize results fails in this error code </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga2142e86841ba63231b5737be452cb938"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2142e86841ba63231b5737be452cb938">&#9670;&nbsp;</a></span>cy_p64_psa_verify_hash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__psacrypto__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a> cy_p64_psa_verify_hash </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__import__export.html#ga9ab16c7405b7975390450a98240611d2">cy_p64_psa_key_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__crypto__types.html#gaacbbf49e9343ccc308acc8142183418d">cy_p64_psa_algorithm_t</a>&#160;</td>
+          <td class="paramname"><em>alg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>hash</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>hash_length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>signature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>signature_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verifies the signature of a hash or short message using a public key. </p>
+<p>Note that to perform a hash-and-sign signature algorithm, you must first calculate the hash by calling <a class="el" href="group__hash__operations.html#ga7aab7208c3eaeead5155d0a5f8d779c1" title="Sets up a multipart hash operation. ">cy_p64_psa_hash_setup()</a>, <a class="el" href="group__hash__operations.html#gadaf3123ca1340ae0d0684d770d4ab301" title="Adds a message fragment to a multipart hash operation. ">cy_p64_psa_hash_update()</a> and <a class="el" href="group__hash__operations.html#ga56ba6d302cc0040c03362f7edffb12e0" title="Finishes the calculation of the hash of a message. ">cy_p64_psa_hash_finish()</a>. Then pass the resulting hash as the <code>hash</code> parameter to this function. You can use <a class="el" href="group__crypto__types.html#ga70f316b9f0ebb33fbd1f10af45ae45e6" title="Get the hash used by a hash-and-sign signature algorithm. ">CY_P64_PSA_ALG_SIGN_GET_HASH</a>(<code>alg</code>) to determine the hash algorithm to use.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">handle</td><td>Handle to the key to use for the operation. It must be a public key or an asymmetric key pair. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">alg</td><td>A signature algorithm compatible with the type of <code>handle</code>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">hash</td><td>The hash or message whose signature is to be verified. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">hash_length</td><td>The size of the <code>hash</code> buffer in bytes. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">signature</td><td>The buffer containing the signature to verify. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">signature_length</td><td>The size of the <code>signature</code> buffer in bytes.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gabf57808e9787a7f482bdfc8a1b377685" title="The action was completed successfully. ">CY_P64_PSA_SUCCESS</a></td><td>The signature is valid. </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga179d52d2be9a5dcd9c1f3dc71f2b71a5" title="The key handle is not valid. ">CY_P64_PSA_ERROR_INVALID_HANDLE</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga489bed3982ecce165e0524e5debb9fd0" title="The requested action is denied by a policy. ">CY_P64_PSA_ERROR_NOT_PERMITTED</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gab49ea7a3f238b8c5f37fe04d89543d70" title="The signature, MAC or hash is incorrect. ">CY_P64_PSA_ERROR_INVALID_SIGNATURE</a></td><td>The calculation was perfomed successfully, but the passed signature is not a valid signature. </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga0acb01b82422b2aef20c543f38622bf2" title="The requested operation or a parameter is not supported by this implementation. ">CY_P64_PSA_ERROR_NOT_SUPPORTED</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga1c798809ceb7c9e0fb4da0c2adfdd34c" title="The parameters passed to the function are invalid. ">CY_P64_PSA_ERROR_INVALID_ARGUMENT</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gaa209f7289e4f7ccf07c693e99638e0c3" title="There is not enough runtime memory. ">CY_P64_PSA_ERROR_INSUFFICIENT_MEMORY</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga90493ef15f5b8e005f8d9ec1cf5d28a2" title="There was a communication failure inside the implementation. ">CY_P64_PSA_ERROR_COMMUNICATION_FAILURE</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gaa48736089fd7ef40a370948e6e2160da" title="A hardware failure was detected. ">CY_P64_PSA_ERROR_HARDWARE_FAILURE</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gaee7005bec37e7c8b61cf07800c8252ff" title="A tampering attempt was detected. ">CY_P64_PSA_ERROR_CORRUPTION_DETECTED</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga4968b5ad5c87add717f57c5e018cd4e5" title="There was a storage failure that may have led to data loss. ">CY_P64_PSA_ERROR_STORAGE_FAILURE</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gae5c7844defdf120d28efb745183538b9" title="The requested action cannot be performed in the current state. ">CY_P64_PSA_ERROR_BAD_STATE</a></td><td>It is implementation-dependent whether initialize results fails in this error code </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ga7aab7208c3eaeead5155d0a5f8d779c1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga7aab7208c3eaeead5155d0a5f8d779c1">&#9670;&nbsp;</a></span>cy_p64_psa_hash_setup()</h2>
 
@@ -145,7 +325,7 @@ static struct cy_p64_psa_hash_operation_s&#160;</td><td class="memItemRight" val
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a> cy_p64_psa_hash_setup </td>
+          <td class="memname"><a class="el" href="group__psacrypto__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a> cy_p64_psa_hash_setup </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__hash__operations.html#gaaaafb934bf6c27d819619ead27f547da">cy_p64_psa_hash_operation_t</a> *&#160;</td>
           <td class="paramname"><em>operation</em>, </td>
@@ -186,15 +366,14 @@ static struct cy_p64_psa_hash_operation_s&#160;</td><td class="memItemRight" val
 </dl>
 <dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
-    <tr><td class="paramname"><a class="el" href="group__error.html#gabf57808e9787a7f482bdfc8a1b377685" title="The action was completed successfully. ">CY_P64_PSA_SUCCESS</a></td><td>Success. </td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#ga0acb01b82422b2aef20c543f38622bf2" title="The requested operation or a parameter is not supported by this implementation. ">CY_P64_PSA_ERROR_NOT_SUPPORTED</a></td><td><code>alg</code> is not a supported hash algorithm. </td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#ga1c798809ceb7c9e0fb4da0c2adfdd34c" title="The parameters passed to the function are invalid. ">CY_P64_PSA_ERROR_INVALID_ARGUMENT</a></td><td><code>alg</code> is not a hash algorithm. </td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#gae5c7844defdf120d28efb745183538b9" title="The requested action cannot be performed in the current state. ">CY_P64_PSA_ERROR_BAD_STATE</a></td><td>The operation state is not valid (it must be inactive). </td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#gaa209f7289e4f7ccf07c693e99638e0c3" title="There is not enough runtime memory. ">CY_P64_PSA_ERROR_INSUFFICIENT_MEMORY</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#ga90493ef15f5b8e005f8d9ec1cf5d28a2" title="There was a communication failure inside the implementation. ">CY_P64_PSA_ERROR_COMMUNICATION_FAILURE</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#gaa48736089fd7ef40a370948e6e2160da" title="A hardware failure was detected. ">CY_P64_PSA_ERROR_HARDWARE_FAILURE</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#gaee7005bec37e7c8b61cf07800c8252ff" title="A tampering attempt was detected. ">CY_P64_PSA_ERROR_CORRUPTION_DETECTED</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#gae5c7844defdf120d28efb745183538b9" title="The requested action cannot be performed in the current state. ">CY_P64_PSA_ERROR_BAD_STATE</a></td><td>It is implementation-dependent whether initialize results fails in this error code </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gabf57808e9787a7f482bdfc8a1b377685" title="The action was completed successfully. ">CY_P64_PSA_SUCCESS</a></td><td>Success. </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga0acb01b82422b2aef20c543f38622bf2" title="The requested operation or a parameter is not supported by this implementation. ">CY_P64_PSA_ERROR_NOT_SUPPORTED</a></td><td><code>alg</code> is not a supported hash algorithm. </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga1c798809ceb7c9e0fb4da0c2adfdd34c" title="The parameters passed to the function are invalid. ">CY_P64_PSA_ERROR_INVALID_ARGUMENT</a></td><td><code>alg</code> is not a hash algorithm. </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gae5c7844defdf120d28efb745183538b9" title="The requested action cannot be performed in the current state. ">CY_P64_PSA_ERROR_BAD_STATE</a></td><td>The operation state is not valid (it must be inactive). </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gaa209f7289e4f7ccf07c693e99638e0c3" title="There is not enough runtime memory. ">CY_P64_PSA_ERROR_INSUFFICIENT_MEMORY</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga90493ef15f5b8e005f8d9ec1cf5d28a2" title="There was a communication failure inside the implementation. ">CY_P64_PSA_ERROR_COMMUNICATION_FAILURE</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gaa48736089fd7ef40a370948e6e2160da" title="A hardware failure was detected. ">CY_P64_PSA_ERROR_HARDWARE_FAILURE</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gaee7005bec37e7c8b61cf07800c8252ff" title="A tampering attempt was detected. ">CY_P64_PSA_ERROR_CORRUPTION_DETECTED</a></td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -208,7 +387,7 @@ static struct cy_p64_psa_hash_operation_s&#160;</td><td class="memItemRight" val
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a> cy_p64_psa_hash_update </td>
+          <td class="memname"><a class="el" href="group__psacrypto__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a> cy_p64_psa_hash_update </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__hash__operations.html#gaaaafb934bf6c27d819619ead27f547da">cy_p64_psa_hash_operation_t</a> *&#160;</td>
           <td class="paramname"><em>operation</em>, </td>
@@ -246,13 +425,12 @@ static struct cy_p64_psa_hash_operation_s&#160;</td><td class="memItemRight" val
 </dl>
 <dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
-    <tr><td class="paramname"><a class="el" href="group__error.html#gabf57808e9787a7f482bdfc8a1b377685" title="The action was completed successfully. ">CY_P64_PSA_SUCCESS</a></td><td>Success. </td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#gae5c7844defdf120d28efb745183538b9" title="The requested action cannot be performed in the current state. ">CY_P64_PSA_ERROR_BAD_STATE</a></td><td>The operation state is not valid (it must be active). </td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#gaa209f7289e4f7ccf07c693e99638e0c3" title="There is not enough runtime memory. ">CY_P64_PSA_ERROR_INSUFFICIENT_MEMORY</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#ga90493ef15f5b8e005f8d9ec1cf5d28a2" title="There was a communication failure inside the implementation. ">CY_P64_PSA_ERROR_COMMUNICATION_FAILURE</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#gaa48736089fd7ef40a370948e6e2160da" title="A hardware failure was detected. ">CY_P64_PSA_ERROR_HARDWARE_FAILURE</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#gaee7005bec37e7c8b61cf07800c8252ff" title="A tampering attempt was detected. ">CY_P64_PSA_ERROR_CORRUPTION_DETECTED</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#gae5c7844defdf120d28efb745183538b9" title="The requested action cannot be performed in the current state. ">CY_P64_PSA_ERROR_BAD_STATE</a></td><td>It is implementation-dependent whether initialize results fails in this error code </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gabf57808e9787a7f482bdfc8a1b377685" title="The action was completed successfully. ">CY_P64_PSA_SUCCESS</a></td><td>Success. </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gae5c7844defdf120d28efb745183538b9" title="The requested action cannot be performed in the current state. ">CY_P64_PSA_ERROR_BAD_STATE</a></td><td>The operation state is not valid (it must be active). </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gaa209f7289e4f7ccf07c693e99638e0c3" title="There is not enough runtime memory. ">CY_P64_PSA_ERROR_INSUFFICIENT_MEMORY</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga90493ef15f5b8e005f8d9ec1cf5d28a2" title="There was a communication failure inside the implementation. ">CY_P64_PSA_ERROR_COMMUNICATION_FAILURE</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gaa48736089fd7ef40a370948e6e2160da" title="A hardware failure was detected. ">CY_P64_PSA_ERROR_HARDWARE_FAILURE</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gaee7005bec37e7c8b61cf07800c8252ff" title="A tampering attempt was detected. ">CY_P64_PSA_ERROR_CORRUPTION_DETECTED</a></td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -266,7 +444,7 @@ static struct cy_p64_psa_hash_operation_s&#160;</td><td class="memItemRight" val
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a> cy_p64_psa_hash_finish </td>
+          <td class="memname"><a class="el" href="group__psacrypto__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a> cy_p64_psa_hash_finish </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__hash__operations.html#gaaaafb934bf6c27d819619ead27f547da">cy_p64_psa_hash_operation_t</a> *&#160;</td>
           <td class="paramname"><em>operation</em>, </td>
@@ -312,14 +490,13 @@ static struct cy_p64_psa_hash_operation_s&#160;</td><td class="memItemRight" val
 </dl>
 <dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
-    <tr><td class="paramname"><a class="el" href="group__error.html#gabf57808e9787a7f482bdfc8a1b377685" title="The action was completed successfully. ">CY_P64_PSA_SUCCESS</a></td><td>Success. </td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#gae5c7844defdf120d28efb745183538b9" title="The requested action cannot be performed in the current state. ">CY_P64_PSA_ERROR_BAD_STATE</a></td><td>The operation state is not valid (it must be active). </td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#ga0a9809dee3cc1aa571a472880be73201" title="The output buffer is too small. ">CY_P64_PSA_ERROR_BUFFER_TOO_SMALL</a></td><td>The size of the <code>hash</code> buffer is too small. You can determine a sufficient buffer size by calling <a class="el" href="group__constants__sizes.html#ga735d1c825c4f7effd27c9eda45a5074c" title="The size of the output of psa_hash_finish(), in bytes. ">CY_P64_PSA_HASH_SIZE</a>(<code>alg</code>) where <code>alg</code> is the hash algorithm that is calculated. </td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#gaa209f7289e4f7ccf07c693e99638e0c3" title="There is not enough runtime memory. ">CY_P64_PSA_ERROR_INSUFFICIENT_MEMORY</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#ga90493ef15f5b8e005f8d9ec1cf5d28a2" title="There was a communication failure inside the implementation. ">CY_P64_PSA_ERROR_COMMUNICATION_FAILURE</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#gaa48736089fd7ef40a370948e6e2160da" title="A hardware failure was detected. ">CY_P64_PSA_ERROR_HARDWARE_FAILURE</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#gaee7005bec37e7c8b61cf07800c8252ff" title="A tampering attempt was detected. ">CY_P64_PSA_ERROR_CORRUPTION_DETECTED</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#gae5c7844defdf120d28efb745183538b9" title="The requested action cannot be performed in the current state. ">CY_P64_PSA_ERROR_BAD_STATE</a></td><td>It is implementation-dependent whether initialize results fails in this error code </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gabf57808e9787a7f482bdfc8a1b377685" title="The action was completed successfully. ">CY_P64_PSA_SUCCESS</a></td><td>Success. </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gae5c7844defdf120d28efb745183538b9" title="The requested action cannot be performed in the current state. ">CY_P64_PSA_ERROR_BAD_STATE</a></td><td>The operation state is not valid (it must be active). </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga0a9809dee3cc1aa571a472880be73201" title="The output buffer is too small. ">CY_P64_PSA_ERROR_BUFFER_TOO_SMALL</a></td><td>The size of the <code>hash</code> buffer is too small. You can determine a sufficient buffer size by calling <a class="el" href="group__constants__sizes.html#ga735d1c825c4f7effd27c9eda45a5074c" title="The size of the output of psa_hash_finish(), in bytes. ">CY_P64_PSA_HASH_SIZE</a>(<code>alg</code>) where <code>alg</code> is the hash algorithm that is calculated. </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gaa209f7289e4f7ccf07c693e99638e0c3" title="There is not enough runtime memory. ">CY_P64_PSA_ERROR_INSUFFICIENT_MEMORY</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga90493ef15f5b8e005f8d9ec1cf5d28a2" title="There was a communication failure inside the implementation. ">CY_P64_PSA_ERROR_COMMUNICATION_FAILURE</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gaa48736089fd7ef40a370948e6e2160da" title="A hardware failure was detected. ">CY_P64_PSA_ERROR_HARDWARE_FAILURE</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gaee7005bec37e7c8b61cf07800c8252ff" title="A tampering attempt was detected. ">CY_P64_PSA_ERROR_CORRUPTION_DETECTED</a></td><td></td></tr>
   </table>
   </dd>
 </dl>

@@ -1,11 +1,14 @@
 /***************************************************************************//**
 *
+* \file cy_p64_psacrypto.h
+* \version 1.0.1
+*
 * \brief
 *  This is the header file for the secure flashboot psa crypto syscalls.
 *
 ********************************************************************************
 * \copyright
-* Copyright 2021, Cypress Semiconductor Corporation (an Infineon company).
+* Copyright 2021-2022, Cypress Semiconductor Corporation (an Infineon company).
 * All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
@@ -25,7 +28,7 @@
 *   \defgroup cipher_operations Cipher operations
 *   \defgroup constants_sizes Data size definitions
 *   \defgroup crypto_types Key and algorithm types
-*   \defgroup error Error codes
+*   \defgroup psacrypto_error Error codes
 *   \defgroup hash_operations Hash operations
 *   \defgroup import_export Key import and export
 *   \defgroup key_derivation Key derivation
@@ -86,6 +89,10 @@ typedef uint32_t cy_p64_key_slot_t;
 
 /** \} */
 
+
+/** \addtogroup hash_operations
+ * \{
+ */
 cy_p64_psa_status_t cy_p64_psa_sign_hash(
     cy_p64_psa_key_handle_t handle,
     cy_p64_psa_algorithm_t alg,
@@ -102,6 +109,7 @@ cy_p64_psa_status_t cy_p64_psa_verify_hash(
     size_t hash_length,
     const uint8_t *signature,
     size_t signature_length);
+/** \} */
 
 
 /** \addtogroup cipher_operations
@@ -133,62 +141,15 @@ cy_p64_psa_status_t cy_p64_psa_cipher_update(
 /** \} */
 
 
-/**
- * \brief Destroys a key.
- *
- * This function destroys a key from both volatile
- * memory and, if applicable, non-volatile storage. Implementations shall
- * make a best effort to ensure that that the key material cannot be recovered.
- *
- * This function also erases any metadata such as policies and frees
- * resources associated with the key. To free all resources associated with
- * the key, all handles to the key must be closed or destroyed.
- *
- * Destroying the key makes the handle invalid, and the key handle
- * must not be used again by the application. Using other open handles to the
- * destroyed key in a cryptographic operation will result in an error.
- *
- * If a key is currently in use in a multipart operation, then destroying the
- * key will cause the multipart operation to fail.
- *
- * \param handle        The handle to the key to erase.
- *                      If this is \c 0, do nothing and return \c CY_P64_PSA_SUCCESS.
- *
- * \retval #CY_P64_PSA_SUCCESS
- *         \p handle was a valid handle and the key material that it
- *         referred to has been erased.
- *         Alternatively, \p handle is \c 0.
- * \retval #CY_P64_PSA_ERROR_NOT_PERMITTED
- *         The key cannot be erased because it is
- *         read-only, either due to a policy or due to physical restrictions.
- * \retval #CY_P64_PSA_ERROR_INVALID_HANDLE
- *         \p handle is not a valid handle nor \c 0.
- * \retval #CY_P64_PSA_ERROR_COMMUNICATION_FAILURE
- *         There was an failure in communication with the cryptoprocessor.
- *         The key material may still be present in the cryptoprocessor.
- * \retval #CY_P64_PSA_ERROR_STORAGE_FAILURE
- *         The storage is corrupted. Implementations shall make a best effort
- *         to erase key material even in this stage, however applications
- *         should be aware that it may be impossible to guarantee that the
- *         key material is not recoverable in such cases.
- * \retval #CY_P64_PSA_ERROR_CORRUPTION_DETECTED
- *         An unexpected condition which is not a storage corruption or
- *         a communication failure occurred. The cryptoprocessor may have
- *         been compromised.
- * \retval #CY_P64_PSA_ERROR_BAD_STATE
- *         It is implementation-dependent whether a failure to initialize
- *         results in this error code.
+/** \addtogroup import_export
+ * \{
  */
- 
 cy_p64_psa_status_t cy_p64_psa_destroy_key(cy_p64_psa_key_handle_t handle);
-
-
-
 
 cy_p64_psa_status_t cy_p64_psa_generate_key(
     cy_p64_psa_key_handle_t *handle,
     const cy_p64_psa_key_attributes_t *attributes);
-
+/** \} */
 
 
 /** \addtogroup random
@@ -284,6 +245,7 @@ cy_p64_psa_status_t cy_p64_psa_key_derivation_out_key(
     cy_p64_psa_key_handle_t *handle );
 /** \} */
 
+
 /** \addtogroup import_export
  * \{
  */
@@ -299,7 +261,6 @@ cy_p64_psa_status_t cy_p64_keys_store_key(
 cy_p64_psa_status_t cy_p64_keys_close_key(cy_p64_key_slot_t key_id);
 
 uint32_t cy_p64_keys_get_count(void);
-
 /** \} */
 
 
@@ -321,6 +282,7 @@ cy_p64_psa_status_t cy_p64_psa_mac_verify_finish(
     const uint8_t *mac,
     size_t mac_length);
 /** \} */
+
 
 /** \addtogroup mem
  * \{

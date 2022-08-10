@@ -19,5 +19,6 @@ var group__syscalls__macros =
     [ "CY_P64_POLICY_TEMPL_BOOT", "group__syscalls__macros.html#ga1d3d46fb5f4884884bab59a1e2885f4c", null ],
     [ "CY_P64_POLICY_TEMPL_DEBUG", "group__syscalls__macros.html#gaccfe3b187b514f0caac4ccfe98570e25", null ],
     [ "CY_P64_POLICY_CERTIFICATE", "group__syscalls__macros.html#ga19e27f323a14c84a283acbe18b1f1e35", null ],
+    [ "CY_P64_POLICY_CERT_INDEX_MASK", "group__syscalls__macros.html#ga4a45dafd63c50dc865070cc884491e28", null ],
     [ "CY_P64_POLICY_IMG_CERTIFICATE", "group__syscalls__macros.html#ga382978334fb3be574f0dd72323ae1a53", null ]
 ];

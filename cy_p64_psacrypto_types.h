@@ -12,7 +12,7 @@
  *
  * This header file does not declare any function.
  *
- * Copyright 2019-2021 Cypress Semiconductor Corporation (an Infineon company)
+ * Copyright 2019-2022 Cypress Semiconductor Corporation (an Infineon company)
  *
  */
 /*
@@ -39,7 +39,7 @@
 
 #include <stdint.h>
 
-/** \addtogroup error
+/** \addtogroup psacrypto_error
  * \{
  */
 
@@ -121,37 +121,37 @@ typedef uint32_t cy_p64_psa_key_usage_t;
  * An attribute structure may contain references to auxiliary resources,
  * for example pointers to allocated memory or indirect references to
  * pre-calculated values. In order to free such resources, the application
- * must call psa_reset_key_attributes(). As an exception, calling
- * psa_reset_key_attributes() on an attribute structure is optional if
+ * must call cy_p64_psa_reset_key_attributes(). As an exception, calling
+ * cy_p64_psa_reset_key_attributes() on an attribute structure is optional if
  * the structure has only been modified by the following functions
- * since it was initialized or last reset with psa_reset_key_attributes():
- * - psa_set_key_id()
- * - psa_set_key_lifetime()
- * - psa_set_key_type()
- * - psa_set_key_bits()
- * - psa_set_key_usage_flags()
- * - psa_set_key_algorithm()
+ * since it was initialized or last reset with cy_p64_psa_reset_key_attributes():
+ * - cy_p64_psa_set_key_id()
+ * - cy_p64_psa_set_key_lifetime()
+ * - cy_p64_psa_set_key_type()
+ * - cy_p64_psa_set_key_bits()
+ * - cy_p64_psa_set_key_usage_flags()
+ * - cy_p64_psa_set_key_algorithm()
  *
  * Before calling any function on a key attribute structure, the application
  * must initialize it by any of the following means:
  * - Set the structure to all-bits-zero, for example:
  *   \code
- *   psa_key_attributes_t attributes;
+ *   cy_p64_psa_key_attributes_t attributes;
  *   memset(&attributes, 0, sizeof(attributes));
  *   \endcode
  * - Initialize the structure to logical zero values, for example:
  *   \code
- *   psa_key_attributes_t attributes = {0};
+ *   cy_p64_psa_key_attributes_t attributes = {0};
  *   \endcode
  * - Initialize the structure to the initializer #CY_P64_PSA_KEY_ATTRIBUTES_INIT,
  *   for example:
  *   \code
- *   psa_key_attributes_t attributes = CY_P64_PSA_KEY_ATTRIBUTES_INIT;
+ *   cy_p64_psa_key_attributes_t attributes = CY_P64_PSA_KEY_ATTRIBUTES_INIT;
  *   \endcode
  * - Assign the result of the function cy_p64_psa_key_attributes_init()
  *   to the structure, for example:
  *   \code
- *   psa_key_attributes_t attributes;
+ *   cy_p64_psa_key_attributes_t attributes;
  *   attributes = cy_p64_psa_key_attributes_init();
  *   \endcode
  *
@@ -168,31 +168,31 @@ typedef uint32_t cy_p64_psa_key_usage_t;
  *
  * A typical sequence to create a key is as follows:
  * -# Create and initialize an attribute structure.
- * -# If the key is persistent, call psa_set_key_id().
- *    Also call psa_set_key_lifetime() to place the key in a non-default
+ * -# If the key is persistent, call cy_p64_psa_set_key_id().
+ *    Also call cy_p64_psa_set_key_lifetime() to place the key in a non-default
  *    location.
- * -# Set the key policy with psa_set_key_usage_flags() and
- *    psa_set_key_algorithm().
- * -# Set the key type with psa_set_key_type().
+ * -# Set the key policy with cy_p64_psa_set_key_usage_flags() and
+ *    cy_p64_psa_set_key_algorithm().
+ * -# Set the key type with cy_p64_psa_set_key_type().
  *    Skip this step if copying an existing key with psa_copy_key().
- * -# When generating a random key with psa_generate_key() or deriving a key
- *    with psa_key_derivation_output_key(), set the desired key size with
- *    psa_set_key_bits().
- * -# Call a key creation function: psa_import_key(), psa_generate_key(),
- *    psa_key_derivation_output_key() or psa_copy_key(). This function reads
+ * -# When generating a random key with cy_p64_psa_generate_key() or deriving a key
+ *    with cy_p64_psa_key_derivation_output_key(), set the desired key size with
+ *    cy_p64_psa_set_key_bits().
+ * -# Call a key creation function: cy_p64_psa_import_key(), cy_p64_psa_generate_key(),
+ *    cy_p64_psa_key_derivation_output_key() or psa_copy_key(). This function reads
  *    the attribute structure, creates a key with these attributes, and
  *    outputs a handle to the newly created key.
  * -# The attribute structure is now no longer necessary.
- *    You may call psa_reset_key_attributes(), although this is optional
+ *    You may call cy_p64_psa_reset_key_attributes(), although this is optional
  *    with the workflow presented here because the attributes currently
  *    defined in this specification do not require any additional resources
  *    beyond the structure itself.
  *
  * A typical sequence to query a key's attributes is as follows:
- * -# Call psa_get_key_attributes().
+ * -# Call cy_p64_psa_get_key_attributes().
  * -# Call `psa_get_key_xxx` functions to retrieve the attribute(s) that
  *    you are interested in.
- * -# Call psa_reset_key_attributes() to free any resources that may be
+ * -# Call cy_p64_cy_p64_psa_reset_key_attributes() to free any resources that may be
  *    used by the attribute structure.
  *
  * Once a key is created, it is impossible to change its attributes.
@@ -238,8 +238,8 @@ typedef struct cy_p64_psa_key_policy_s cy_p64_psa_key_policy_t;
  * Persistent keys have a key identifier of type #cy_p64_psa_key_id_t.
  * This identifier remains valid throughout the lifetime of the key,
  * even if the application instance that created the key terminates.
- * The application can call psa_open_key() to open a persistent key that
- * it created previously.
+ * The application can call cy_p64_keys_load_key_handle() to open a persistent
+ * key that it created previously.
  *
  * This specification defines two basic lifetime values:
  * - Keys with the lifetime #CY_P64_PSA_KEY_LIFETIME_VOLATILE are volatile.
@@ -341,8 +341,8 @@ typedef uint32_t cy_p64_psa_key_location_t;
 /* Implementation-specific quirk: The Mbed Crypto library can be built as
  * part of a multi-client service that exposes the PSA Crypto API in each
  * client and encodes the client identity in the key id argument of functions
- * such as psa_open_key(). In this build configuration, we define
- * psa_key_id_t in crypto_platform.h instead of here. */
+ * such as cy_p64_keys_load_key_handle(). In this build configuration, we define
+ * cy_p64_psa_key_id_t in crypto_platform.h instead of here. */
 typedef uint32_t cy_p64_psa_key_id_t;
 
 /** \} */
@@ -383,12 +383,12 @@ typedef struct cy_p64_psa_hash_operation_s cy_p64_psa_hash_operation_t;
  * initialize it by any of the following means:
  * - Set the structure to all-bits-zero, for example:
  *   \code
- *   psa_mac_operation_t operation;
+ *   cy_p64_psa_mac_operation_t operation;
  *   memset(&operation, 0, sizeof(operation));
  *   \endcode
  * - Initialize the structure to logical zero values, for example:
  *   \code
- *   psa_mac_operation_t operation = {0};
+ *   cy_p64_psa_mac_operation_t operation = {0};
  *   \endcode
  *
  * This is an implementation-defined \c struct. Applications should not
@@ -408,22 +408,22 @@ typedef struct cy_p64_psa_mac_operation_s cy_p64_psa_mac_operation_t;
  * application must initialize it by any of the following means:
  * - Set the structure to all-bits-zero, for example:
  *   \code
- *   psa_key_derivation_operation_t operation;
+ *   cy_p64_psa_key_derivation_operation_t operation;
  *   memset(&operation, 0, sizeof(operation));
  *   \endcode
  * - Initialize the structure to logical zero values, for example:
  *   \code
- *   psa_key_derivation_operation_t operation = {0};
+ *   cy_p64_psa_key_derivation_operation_t operation = {0};
  *   \endcode
  * - Initialize the structure to the initializer #CY_P64_PSA_KEY_DERIVATION_OPERATION_INIT,
  *   for example:
  *   \code
- *   psa_key_derivation_operation_t operation = CY_P64_PSA_KEY_DERIVATION_OPERATION_INIT;
+ *   cy_p64_psa_key_derivation_operation_t operation = CY_P64_PSA_KEY_DERIVATION_OPERATION_INIT;
  *   \endcode
  * - Assign the result of the function cy_p64_psa_key_derivation_operation_init()
  *   to the structure, for example:
  *   \code
- *   psa_key_derivation_operation_t operation;
+ *   cy_p64_psa_key_derivation_operation_t operation;
  *   operation = cy_p64_psa_key_derivation_operation_init();
  *   \endcode
  *

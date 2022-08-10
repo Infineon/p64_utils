@@ -1,13 +1,13 @@
 /***************************************************************************//**
 * \file cy_p64_syscalls.h
-* \version 1.0
+* \version 1.0.1
 *
 * \brief
 * This is the header file for syscall functions.
 *
 ********************************************************************************
 * \copyright
-* Copyright 2021, Cypress Semiconductor Corporation (an Infineon company).
+* Copyright 2021-2022, Cypress Semiconductor Corporation (an Infineon company).
 * All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
@@ -22,7 +22,21 @@
 #include "cy_utils.h"
 #include "cy_p64_syscall.h"
 
-#define CY_P64_CM4_ROM_LOOP_ADDR         (0x16004000U)
+#define CY_P64_CM4_ROM_LOOP_ADDR            (0x16004000U)
+#define CY_P64_SFB_VERSION_ADDR             (0x16002018U)
+#define CY_P64_SFB_VERSION_Pos              (24UL)
+#define CY_P64_SFB_VERSION_Msk              (0xFF000000UL)
+#define CY_P64_SFB_VERSION_RELEASE          (2U)
+
+#if (CY_FLASH_SIZE == 0x001D0000UL)
+    #define CY_P64_CHAIN_OF_TRUST_ADDR       (0x101FDE00U)
+#elif (CY_FLASH_SIZE == 0x000D0000UL)
+    #define CY_P64_CHAIN_OF_TRUST_ADDR       (0x100FDE00U)
+#elif (CY_FLASH_SIZE == 0x00060000UL)
+    #define CY_P64_CHAIN_OF_TRUST_ADDR       (0x14005E00U)
+#else
+    #error "Not supported device"
+#endif /* CY_FLASH_SIZE */
 
 #define CY_P64_SRSS_TEST_MODE_ADDR       (SRSS_BASE | 0x0100U)
 #define CY_P64_TEST_MODE_MASK            (0x80000000U)
@@ -77,6 +91,8 @@
 /** Get Certificate command, add a certificate index in the "chain_of_trust" array
  * of the provisioned packet to this macro to get specific certificate */
 #define CY_P64_POLICY_CERTIFICATE       (0x200U)
+/** Mask for policy certificate index */
+#define CY_P64_POLICY_CERT_INDEX_MASK   (0x0FFu)
 /** Image certificate */
 #define CY_P64_POLICY_IMG_CERTIFICATE   (0x300U)
 

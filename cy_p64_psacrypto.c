@@ -1,11 +1,14 @@
 /***************************************************************************//**
 *
+* \file cy_p64_psacrypto.c
+* \version 1.0.1
+*
 * \brief
 *  This is the source code file for the secure flashboot psa crypto syscalls.
 *
 ********************************************************************************
 * \copyright
-* Copyright 2021, Cypress Semiconductor Corporation (an Infineon company).
+* Copyright 2021-2022, Cypress Semiconductor Corporation (an Infineon company).
 * All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
@@ -239,9 +242,6 @@ cy_p64_psa_status_t cy_p64_psa_verify_hash(
  * \retval #CY_P64_PSA_ERROR_STORAGE_FAILURE
  * \retval #CY_P64_PSA_ERROR_BAD_STATE
  *         The operation state is not valid (it must be inactive).
- * \retval #CY_P64_PSA_ERROR_BAD_STATE
- *         It is implementation-dependent whether initialize
- *         results fails in this error code
  */
 cy_p64_psa_status_t cy_p64_psa_cipher_decrypt_setup(
                                     cy_p64_psa_cipher_operation_t *operation,
@@ -304,9 +304,6 @@ cy_p64_psa_status_t cy_p64_psa_cipher_decrypt_setup(
  * \retval #CY_P64_PSA_ERROR_HARDWARE_FAILURE
  * \retval #CY_P64_PSA_ERROR_CORRUPTION_DETECTED
  * \retval #CY_P64_PSA_ERROR_STORAGE_FAILURE
- * \retval #CY_P64_PSA_ERROR_BAD_STATE
- *         It is implementation-dependent whether initialize
- *         results fails in this error code
  */
 cy_p64_psa_status_t cy_p64_psa_cipher_finish(
                                     cy_p64_psa_cipher_operation_t *operation,
@@ -357,9 +354,6 @@ cy_p64_psa_status_t cy_p64_psa_cipher_finish(
  * \retval #CY_P64_PSA_ERROR_HARDWARE_FAILURE
  * \retval #CY_P64_PSA_ERROR_CORRUPTION_DETECTED
  * \retval #CY_P64_PSA_ERROR_STORAGE_FAILURE
- * \retval #CY_P64_PSA_ERROR_BAD_STATE
- *         It is implementation-dependent whether initialize
- *         results fails in this error code
  */
 cy_p64_psa_status_t cy_p64_psa_cipher_set_iv(
                                     cy_p64_psa_cipher_operation_t *operation,
@@ -410,9 +404,6 @@ cy_p64_psa_status_t cy_p64_psa_cipher_set_iv(
  * \retval #CY_P64_PSA_ERROR_HARDWARE_FAILURE
  * \retval #CY_P64_PSA_ERROR_CORRUPTION_DETECTED
  * \retval #CY_P64_PSA_ERROR_STORAGE_FAILURE
- * \retval #CY_P64_PSA_ERROR_BAD_STATE
- *         It is implementation-dependent whether initialize
- *         results fails in this error code
  */
 cy_p64_psa_status_t cy_p64_psa_cipher_update(
                                     cy_p64_psa_cipher_operation_t *operation,
@@ -661,7 +652,7 @@ cy_p64_psa_status_t cy_p64_psa_key_derivation_abort(
  * -# To calculate the hash, call cy_p64_psa_hash_finish().
  *    To compare the hash with an expected value, call cy_p64_psa_hash_verify().
  *
- * If an error occurs at any step after a call to cy_p64_psa_hash_setup(), 
+ * If an error occurs at any step after a call to cy_p64_psa_hash_setup(),
  * reset the operation by calling to cy_p64_psa_hash_abort(). The
  * application may call cy_p64_psa_hash_abort() at any time after the operation
  * has been initialized.
@@ -690,9 +681,6 @@ cy_p64_psa_status_t cy_p64_psa_key_derivation_abort(
  * \retval #CY_P64_PSA_ERROR_COMMUNICATION_FAILURE
  * \retval #CY_P64_PSA_ERROR_HARDWARE_FAILURE
  * \retval #CY_P64_PSA_ERROR_CORRUPTION_DETECTED
- * \retval #CY_P64_PSA_ERROR_BAD_STATE
- *         It is implementation-dependent whether initialize
- *         results fails in this error code
  */
 cy_p64_psa_status_t cy_p64_psa_hash_setup(
                                     cy_p64_psa_hash_operation_t *operation,
@@ -733,9 +721,6 @@ cy_p64_psa_status_t cy_p64_psa_hash_setup(
  * \retval #CY_P64_PSA_ERROR_COMMUNICATION_FAILURE
  * \retval #CY_P64_PSA_ERROR_HARDWARE_FAILURE
  * \retval #CY_P64_PSA_ERROR_CORRUPTION_DETECTED
- * \retval #CY_P64_PSA_ERROR_BAD_STATE
- *         It is implementation-dependent whether initialize
- *         results fails in this error code
  */
 cy_p64_psa_status_t cy_p64_psa_hash_update(
                                     cy_p64_psa_hash_operation_t *operation,
@@ -797,9 +782,6 @@ cy_p64_psa_status_t cy_p64_psa_hash_update(
  * \retval #CY_P64_PSA_ERROR_COMMUNICATION_FAILURE
  * \retval #CY_P64_PSA_ERROR_HARDWARE_FAILURE
  * \retval #CY_P64_PSA_ERROR_CORRUPTION_DETECTED
- * \retval #CY_P64_PSA_ERROR_BAD_STATE
- *         It is implementation-dependent whether initialize
- *         results fails in this error code
  */
 cy_p64_psa_status_t cy_p64_psa_hash_finish(
                                     cy_p64_psa_hash_operation_t *operation,
@@ -1286,9 +1268,6 @@ cy_p64_psa_status_t cy_p64_psa_export_public_key(
  * \retval #CY_P64_PSA_ERROR_HARDWARE_FAILURE
  * \retval #CY_P64_PSA_ERROR_CORRUPTION_DETECTED
  * \retval #CY_P64_PSA_ERROR_STORAGE_FAILURE
- * \retval #CY_P64_PSA_ERROR_BAD_STATE
- *         It is implementation-dependent whether initialize
- *         results fails in this error code
  */
 cy_p64_psa_status_t cy_p64_psa_key_derivation_out_key(
                                     const cy_p64_psa_key_attributes_t *attributes,
@@ -1354,9 +1333,6 @@ cy_p64_psa_status_t cy_p64_psa_key_derivation_out_key(
  * \retval #CY_P64_PSA_ERROR_STORAGE_FAILURE
  * \retval #CY_P64_PSA_ERROR_BAD_STATE
  *         The operation state is not valid for this input \p step.
- * \retval #CY_P64_PSA_ERROR_BAD_STATE
- *         It is implementation-dependent whether initialize
- *         results fails in this error code
  */
 cy_p64_psa_status_t cy_p64_psa_key_derivation_inp_key(
                                     cy_p64_psa_key_derivation_operation_t *operation,
@@ -1417,9 +1393,6 @@ cy_p64_psa_status_t cy_p64_psa_key_derivation_inp_key(
  * \retval #CY_P64_PSA_ERROR_STORAGE_FAILURE
  * \retval #CY_P64_PSA_ERROR_BAD_STATE
  *         The operation state is not valid for this input \p step.
- * \retval #CY_P64_PSA_ERROR_BAD_STATE
- *         It is implementation-dependent whether initialize
- *         results fails in this error code
  */
 cy_p64_psa_status_t cy_p64_psa_key_derivation_inp_bytes(
                                     cy_p64_psa_key_derivation_operation_t *operation,
@@ -1478,9 +1451,6 @@ cy_p64_psa_status_t cy_p64_psa_key_derivation_inp_bytes(
  * \retval #CY_P64_PSA_ERROR_HARDWARE_FAILURE
  * \retval #CY_P64_PSA_ERROR_CORRUPTION_DETECTED
  * \retval #CY_P64_PSA_ERROR_STORAGE_FAILURE
- * \retval #CY_P64_PSA_ERROR_BAD_STATE
- *         It is implementation-dependent whether initialize
- *         results fails in this error code
  */
 cy_p64_psa_status_t cy_p64_psa_key_derivation_out_bytes(
                                     cy_p64_psa_key_derivation_operation_t *operation,
@@ -1563,9 +1533,6 @@ cy_p64_psa_status_t cy_p64_psa_key_derivation_out_bytes(
  * \retval #CY_P64_PSA_ERROR_HARDWARE_FAILURE
  * \retval #CY_P64_PSA_ERROR_CORRUPTION_DETECTED
  * \retval #CY_P64_PSA_ERROR_STORAGE_FAILURE
- * \retval #CY_P64_PSA_ERROR_BAD_STATE
- *         It is implementation-dependent whether initialize
- *         results fails in this error code
  */
 cy_p64_psa_status_t cy_p64_psa_key_derivation_key_agreement(
                                     cy_p64_psa_key_derivation_operation_t *operation,
@@ -1772,9 +1739,6 @@ uint32_t cy_p64_keys_get_count(void)
  * \retval #CY_P64_PSA_ERROR_STORAGE_FAILURE
  * \retval #CY_P64_PSA_ERROR_BAD_STATE
  *         The operation state is not valid (it must be inactive).
- * \retval #CY_P64_PSA_ERROR_BAD_STATE
- *         It is implementation-dependent whether initialize
- *         results fails in this error code
  */
 cy_p64_psa_status_t cy_p64_psa_key_derivation_setup(
                                     cy_p64_psa_key_derivation_operation_t *operation,
@@ -1849,9 +1813,6 @@ cy_p64_psa_status_t cy_p64_psa_key_derivation_setup(
  *         The key could not be retrieved from storage
  * \retval #CY_P64_PSA_ERROR_BAD_STATE
  *         The operation state is not valid (it must be inactive).
- * \retval #CY_P64_PSA_ERROR_BAD_STATE
- *         It is implementation-dependent whether initialize
- *         results fails in this error code
  */
 cy_p64_psa_status_t cy_p64_psa_mac_verify_setup(
                                     cy_p64_psa_mac_operation_t *operation,
@@ -1897,9 +1858,6 @@ cy_p64_psa_status_t cy_p64_psa_mac_verify_setup(
  * \retval #CY_P64_PSA_ERROR_HARDWARE_FAILURE
  * \retval #CY_P64_PSA_ERROR_CORRUPTION_DETECTED
  * \retval #CY_P64_PSA_ERROR_STORAGE_FAILURE
- * \retval #CY_P64_PSA_ERROR_BAD_STATE
- *         It is implementation-dependent whether initialize
- *         results fails in this error code
  */
 cy_p64_psa_status_t cy_p64_psa_mac_update(
                                     cy_p64_psa_mac_operation_t *operation,
@@ -1957,9 +1915,6 @@ cy_p64_psa_status_t cy_p64_psa_mac_update(
  * \retval #CY_P64_PSA_ERROR_HARDWARE_FAILURE
  * \retval #CY_P64_PSA_ERROR_CORRUPTION_DETECTED
  * \retval #CY_P64_PSA_ERROR_STORAGE_FAILURE
- * \retval #CY_P64_PSA_ERROR_BAD_STATE
- *         It is implementation-dependent whether initialize
- *         results fails in this error code
  */
 cy_p64_psa_status_t cy_p64_psa_mac_verify_finish(
                                     cy_p64_psa_mac_operation_t *operation,

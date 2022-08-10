@@ -1,13 +1,13 @@
 /***************************************************************************//**
 * \file cy_p64_jwt_policy.c
-* \version 1.0
+* \version 1.0.1
 *
 * \brief
 * This is the source code for the JWT policy parsing and processing.
 *
 ********************************************************************************
 * \copyright
-* Copyright 2021, Cypress Semiconductor Corporation (an Infineon company).
+* Copyright 2021-2022, Cypress Semiconductor Corporation (an Infineon company).
 * All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
@@ -28,6 +28,7 @@
 *
 * \{
 *   \defgroup jwt_policy_api Functions
+    \defgroup jwt_policy_error Error codes
 * \}
 *******************************************************************************/
 
@@ -58,7 +59,9 @@
 * \param[in] jwt_str  The JWT packet to analyze.
 * \param[out] body_ptr The pointer to the JWT body section.
 * \param[out] body_len The length of the JWT body section.
-* \return     \ref CY_P64_SUCCESS for success or error code.
+*
+* \retval #CY_P64_SUCCESS
+* \retval #CY_P64_JWT_ERR_JWT_BROKEN_FORMAT
 *******************************************************************************/
 static cy_p64_error_codes_t cy_p64_get_jwt_data_body(const char *jwt_str, const char **body_ptr, uint32_t *body_len)
 {
@@ -202,7 +205,7 @@ static char* cy_p64_path_get_next_name_index(const char *in_path, char **name, s
 *******************************************************************************/
 const cy_p64_cJSON *cy_p64_find_json_item(const char *path, const cy_p64_cJSON *json)
 {
-    char *name;
+    char *name = NULL;
     size_t idx = 0;
     const cy_p64_cJSON *item = json;
     const char *path_loc = path;
@@ -237,7 +240,14 @@ const cy_p64_cJSON *cy_p64_find_json_item(const char *path, const cy_p64_cJSON *
 *
 * \param[in] jwt_packet     The pointer to the JWT packet.
 * \param[out] json_packet   Outputs the JSON object that contains the JWT payload.
-* \return                   \ref CY_P64_SUCCESS if success, errorcode otherwise.
+*
+* \retval #CY_P64_SUCCESS
+* \retval #CY_P64_JWT_ERR_INVALID_PARAMETER
+*         This error code is returned, if \p json_packet is a null pointer.
+* \retval #CY_P64_JWT_ERR_MALLOC_FAIL
+* \retval #CY_P64_JWT_ERR_B64DECODE_FAIL
+* \retval #CY_P64_JWT_ERR_JSN_PARSE_FAIL
+* \retval #CY_P64_JWT_ERR_OTHER
 *******************************************************************************/
 cy_p64_error_codes_t cy_p64_decode_payload_data(const char *jwt_packet, cy_p64_cJSON **json_packet)
 {
@@ -294,7 +304,12 @@ cy_p64_error_codes_t cy_p64_decode_payload_data(const char *jwt_packet, cy_p64_c
 *
 * \param[in] json   JSON object.
 * \param[out] value The pointer to the BOOLEAN value.
-* \return           \ref CY_P64_SUCCESS if success, errorcode otherwise.
+*
+* \retval #CY_P64_SUCCESS
+* \retval #CY_P64_JWT_ERR_INVALID_PARAMETER
+*         This error code is returned, if \p value is a null pointer.
+* \retval #CY_P64_JWT_ERR_JSN_WRONG_TYPE
+*         This error code is returned, if JSON object type is not boolean.
 *******************************************************************************/
 cy_p64_error_codes_t cy_p64_json_get_boolean(const cy_p64_cJSON *json, bool *value)
 {
@@ -304,11 +319,11 @@ cy_p64_error_codes_t cy_p64_json_get_boolean(const cy_p64_cJSON *json, bool *val
     {
         ret = CY_P64_JWT_ERR_INVALID_PARAMETER;
     }
-    else if(json->type == CY_P64_cJSON_True)
+    else if(json->type == (int)CY_P64_cJSON_True)
     {
         *value = true;
     }
-    else if(json->type == CY_P64_cJSON_False)
+    else if(json->type == (int)CY_P64_cJSON_False)
     {
         *value = false;
     }
@@ -329,7 +344,12 @@ cy_p64_error_codes_t cy_p64_json_get_boolean(const cy_p64_cJSON *json, bool *val
 *
 * \param[in] json   JSON object.
 * \param[out] value The pointer to the unsigned INTEGER value.
-* \return           \ref CY_P64_SUCCESS if success, errorcode otherwise.
+*
+* \retval #CY_P64_SUCCESS
+* \retval #CY_P64_JWT_ERR_INVALID_PARAMETER
+*         This error code is returned, if \p value is a null pointer.
+* \retval #CY_P64_JWT_ERR_JSN_WRONG_TYPE
+*         This error code is returned, if JSON object type is not an integer.
 *******************************************************************************/
 cy_p64_error_codes_t cy_p64_json_get_uint32(const cy_p64_cJSON *json, uint32_t *value)
 {
@@ -360,7 +380,12 @@ cy_p64_error_codes_t cy_p64_json_get_uint32(const cy_p64_cJSON *json, uint32_t *
 *
 * \param[in] json   The JSON object.
 * \param[out] value The pointer to the STRING value.
-* \return           \ref CY_P64_SUCCESS if success, errorcode otherwise.
+*
+* \retval #CY_P64_SUCCESS
+* \retval #CY_P64_JWT_ERR_INVALID_PARAMETER
+*          This error code is returned, if \p value is a null pointer.
+* \retval #CY_P64_JWT_ERR_JSN_WRONG_TYPE
+*         This error ocde is returned, if JSON object type is not a string.
 *******************************************************************************/
 cy_p64_error_codes_t cy_p64_json_get_string(const cy_p64_cJSON *json, const char **value)
 {
@@ -393,7 +418,13 @@ cy_p64_error_codes_t cy_p64_json_get_string(const cy_p64_cJSON *json, const char
 * \param[out] buf   The pointer to the buffer where to store the content.
 * \param[in]  size  The available size of the buffer in bytes.
 * \param[out] olen  The actual size used in the buffer in bytes.
-* \return           \ref CY_P64_SUCCESS if success, errorcode otherwise.
+*
+* \retval #CY_P64_SUCCESS
+* \retval #CY_P64_JWT_ERR_INVALID_PARAMETER
+*         This error code is returned, if \p buf is a null pointer.
+* \retval #CY_P64_JWT_ERR_JSN_WRONG_TYPE
+*         This error code is returned, if JSON object is not an array or it contains
+*         values other than integer or None.
 *******************************************************************************/
 cy_p64_error_codes_t cy_p64_json_get_array_uint8(const cy_p64_cJSON *json, uint8_t *buf, uint32_t size, uint32_t *olen)
 {
@@ -447,7 +478,15 @@ cy_p64_error_codes_t cy_p64_json_get_array_uint8(const cy_p64_cJSON *json, uint8
 * \param[in]  json          The JSON object with a policy to check.
 * \param[in]  image_id      The image ID.
 * \param[out] json_image    Output JSON object that contains image configuration.
-* \return                   \ref CY_P64_SUCCESS if success, errorcode otherwise.
+*
+* \retval #CY_P64_SUCCESS
+* \retval #CY_P64_JWT_ERR_INVALID_PARAMETER
+*         This error code is returned, if \p json_image is a null pointer.
+* \retval #CY_P64_JWT_ERR_JSN_NONOBJ
+*         This error is returned, if JSON does not contain "boot_upgrade/firmware" array
+* \retval #CY_P64_JWT_ERR_JSN_WRONG_TYPE
+*         This error is returned, if "boot_upgrade/firmware" object type is not an array
+* \retval #CY_P64_INVALID
 *******************************************************************************/
 cy_p64_error_codes_t cy_p64_policy_get_image_record(
     const cy_p64_cJSON *json,
@@ -511,7 +550,15 @@ cy_p64_error_codes_t cy_p64_policy_get_image_record(
 * \param[in]  image_type    The image type: "BOOT", "UPGRADE" or other.
 * \param[out] address       Output image address.
 * \param[out] size          Output image size.
-* \return                   \ref CY_P64_SUCCESS if success, errorcode otherwise.
+*
+* \retval #CY_P64_SUCCESS
+* \retval #CY_P64_JWT_ERR_INVALID_PARAMETER
+*         This error code is returned, if \p address or \p size is a null pointer.
+* \retval #CY_P64_JWT_ERR_JSN_NONOBJ
+*         This error is returned, if JSON does not contain "resources" array
+* \retval #CY_P64_JWT_ERR_JSN_WRONG_TYPE
+*         This error is returned, if "resources" object type is not an array
+* \retval #CY_P64_JWT_ERR_JSN_PARSE_FAIL
 *******************************************************************************/
 cy_p64_error_codes_t cy_p64_policy_get_image_address_and_size(
     const cy_p64_cJSON *json,
@@ -576,6 +623,7 @@ cy_p64_error_codes_t cy_p64_policy_get_image_address_and_size(
     return ret;
 }
 
+
 /*******************************************************************************
 * Function Name: cy_p64_policy_get_image_boot_config
 ****************************************************************************//**
@@ -595,7 +643,9 @@ cy_p64_error_codes_t cy_p64_policy_get_image_address_and_size(
 *                            image trailer by calling cy_p64_confirm_image() API,
 *                            otherwise the user application needs to call this
 *                            function after a successful boot.
-* \return                   \ref CY_P64_SUCCESS if success, errorcode otherwise.
+*
+* \retval #CY_P64_SUCCESS
+* \retval #CY_P64_JWT_ERR_JSN_PARSE_FAIL
 *******************************************************************************/
 cy_p64_error_codes_t cy_p64_policy_get_image_boot_config(
     const cy_p64_cJSON *json,
@@ -647,3 +697,4 @@ cy_p64_error_codes_t cy_p64_policy_get_image_boot_config(
 }
 
 /** \} */
+

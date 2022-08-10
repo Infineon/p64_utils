@@ -1,13 +1,13 @@
 /***************************************************************************//**
 * \file cy_p64_syscall.c
-* \version 1.0
+* \version 1.0.1
 *
 * \brief
 * This is the source code file for low-level syscall functions.
 *
 ********************************************************************************
 * \copyright
-* Copyright 2021, Cypress Semiconductor Corporation (an Infineon company).
+* Copyright 2021-2022, Cypress Semiconductor Corporation (an Infineon company).
 * All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
@@ -34,10 +34,57 @@
 #include "cy_crypto_common.h"
 #include "cy_crypto_core.h"
 #include "cy_p64_syscall.h"
+#include "cy_prot.h"
+#include "cy_device_headers.h"
 
 /** SysCall timeout values */
 #define CY_P64_PSACRYPTO_SYSCALL_TIMEOUT_SHORT      (15000UL)
 #define CY_P64_PSACRYPTO_SYSCALL_TIMEOUT_LONG       (2000000000UL)
+
+
+/*******************************************************************************
+* Function Name: IsCryptoPpuDisabled
+****************************************************************************//**
+*
+* This function returns whether the Fixed PPU for Crypto HW is disabled.
+*
+* \return
+* true if Slave structure is disabled.
+* false if Slave structure is enabled.
+*
+*******************************************************************************/
+#if (CY_CPU_CORTEX_M4) /* Check if Crypto is enabled for M4 core access by PPU */
+static bool IsCryptoPpuDisabled(void)
+{
+    bool status = false;
+
+    if (CY_PERI_V1 == 0U)
+    {
+    #if defined(PERI_MS_PPU_FX_CRYPTO_MAIN)
+        PERI_MS_PPU_FX_Type* base = PERI_MS_PPU_FX_CRYPTO_MAIN;
+        uint32_t mask =  ((_VAL2FLD(CY_PROT_ATT_PERI_USER_PERM, CY_PROT_PERM_W) |
+                           _VAL2FLD(CY_PROT_ATT_PERI_PRIV_PERM, CY_PROT_PERM_W)) <<
+                               (PERI_MS_PPU_PR_V2_MS_ATT1_PC6_UR_Pos ));
+        if((base->SL_ATT1 & mask) == mask)
+        {
+            status = true;
+        }
+    #endif /* defined PERI_MS_PPU_FX_CRYPTO_MAIN */
+    }
+    else /* For mxperi version 1.x */
+    {
+    #if defined(PERI_GR_PPU_SL_CRYPTO)
+        PERI_GR_PPU_SL_Type* base = PERI_GR_PPU_SL_CRYPTO;
+        if(_FLD2VAL(PERI_GR_PPU_SL_ATT0_ENABLED, PERI_GR_PPU_SL_ATT0(base)) != CY_PROT_STRUCT_ENABLE)
+        {
+            status = true;
+        }
+    #endif /* defined PERI_GR_PPU_SL_CRYPTO */
+    }
+
+    return status;
+}
+#endif /* (CY_CPU_CORTEX_M4) */
 
 
 /** \addtogroup syscall_api
@@ -62,8 +109,16 @@
 cy_p64_error_codes_t cy_p64_syscall(uint32_t *cmd)
 {
     uint32_t timeout = 0U;
+    cy_en_ipcdrv_status_t ipc_status = CY_IPC_DRV_ERROR;
     cy_p64_error_codes_t status = CY_P64_INVALID_TIMEOUT;
-    bool crypto_is_enabled = Cy_Crypto_Core_IsEnabled(CRYPTO);
+    bool crypto_is_enabled = false;
+
+#if (CY_CPU_CORTEX_M4) /* Check if Crypto is enabled for M4 core access by PPU */
+    if(IsCryptoPpuDisabled())
+#endif /* (CY_CPU_CORTEX_M4) */
+    {
+        crypto_is_enabled = Cy_Crypto_Core_IsEnabled(CRYPTO);
+    }
     if(crypto_is_enabled)
     {
         /* Syscall will disable Crypto HW,
@@ -76,13 +131,13 @@ cy_p64_error_codes_t cy_p64_syscall(uint32_t *cmd)
     /* Get IPC base register address */
     IPC_STRUCT_Type *ipc_struct = Cy_IPC_Drv_GetIpcBaseAddress(CY_IPC_CHAN_SYSCALL);
 
-    while((CY_IPC_DRV_SUCCESS != Cy_IPC_Drv_LockAcquire(ipc_struct)) &&
-          (timeout < CY_P64_PSACRYPTO_SYSCALL_TIMEOUT_SHORT))
+    do
     {
+        ipc_status = Cy_IPC_Drv_LockAcquire(ipc_struct);
         ++timeout;
-    }
+    } while ((timeout < CY_P64_PSACRYPTO_SYSCALL_TIMEOUT_SHORT) && (CY_IPC_DRV_SUCCESS != ipc_status));
 
-    if(timeout < CY_P64_PSACRYPTO_SYSCALL_TIMEOUT_SHORT)
+    if (CY_IPC_DRV_SUCCESS == ipc_status)
     {
         timeout = 0U;
         /* Write command value directly to the IPC DATA register if CY_P64_SYSCALL_DIRECT_PARAMS

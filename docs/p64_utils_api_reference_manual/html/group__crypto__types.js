@@ -28,6 +28,7 @@ var group__crypto__types =
     [ "CY_P64_PSA_ECC_FAMILY_SECP_K1", "group__crypto__types.html#ga3592f7652a639d760a9be72e84996df8", null ],
     [ "CY_P64_PSA_ECC_FAMILY_SECP_R1", "group__crypto__types.html#ga1f4d68cabb3f52c4d2223f8d7805229f", null ],
     [ "CY_P64_PSA_ECC_FAMILY_SECP_R2", "group__crypto__types.html#gad25c9dbba25470cedc79c7ac7fdfc1aa", null ],
+    [ "CY_P64_PSA_ECC_CURVE_SECP256R1", "group__crypto__types.html#ga4e0c7398d1538aef2b0e8237c5563dd0", null ],
     [ "CY_P64_PSA_ECC_FAMILY_SECT_K1", "group__crypto__types.html#ga90bbb1337c55e5bf4efa31a4e172667a", null ],
     [ "CY_P64_PSA_ECC_FAMILY_SECT_R1", "group__crypto__types.html#ga01267bbbbd8c0eb129b4f91f5b770387", null ],
     [ "CY_P64_PSA_ECC_FAMILY_SECT_R2", "group__crypto__types.html#ga06fd5cb9ad05f98ba6d738389b01c33e", null ],

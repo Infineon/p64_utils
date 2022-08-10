@@ -150,14 +150,14 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">id</td><td>Item id (provisioning packet, templates or public keys):<ul>
 <li>0 to 32 - Key slot in SFB Mbed Crypto Key Storage</li>
-<li>0x100 - FB_POLICY_JWT</li>
-<li>0x101 - FB_POLICY_TEMPL_BOOT</li>
-<li>0x102 - FB_POLICY_TEMPL_DEBUG</li>
-<li>0x2xx - FB_POLICY_CERTIFICATE, where xx is a certificate index in the "chain_of_trust" array of the provisioned packet.</li>
-<li>0x300 - FB_POLICY_IMG_CERTIFICATE </li>
+<li>0x100 - CY_P64_POLICY_JWT</li>
+<li>0x101 - CY_P64_POLICY_TEMPL_BOOT</li>
+<li>0x102 - CY_P64_POLICY_TEMPL_DEBUG</li>
+<li>0x2xx - CY_P64_POLICY_CERTIFICATE, where xx is a certificate index in the "chain_of_trust" array of the provisioned packet. Note that when the function is called with this parameter it allocates buffer for the certificate. the buffer is free/reused on the following call for read certificate. To free the buffer explicitly call this function again with ptr=NULL and len=NULL.</li>
+<li>0x300 - CY_P64_POLICY_IMG_CERTIFICATE </li>
 </ul>
 </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">ptr</td><td>The pointer to the response string. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">ptr</td><td>The pointer to the response string. Can be NULL to read 'len' only. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">len</td><td>The length of the response string.</td></tr>
   </table>
   </dd>

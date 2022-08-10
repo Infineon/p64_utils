@@ -13,7 +13,7 @@
  * cryptography module, it is expected that the front-end and the back-end
  * would have different versions of this file.
  *
- * Copyright 2019-2021 Cypress Semiconductor Corporation (an Infineon company)
+ * Copyright 2019-2022 Cypress Semiconductor Corporation (an Infineon company)
  *
  */
 /*
@@ -71,14 +71,22 @@ struct cy_p64_psa_key_policy_s
 };
 /** \endcond */
 
+/** \addtogroup policy
+* \{
+*/
 /** The initial value of the key policy */
 #define CY_P64_PSA_KEY_POLICY_INIT {0, 0, 0}
 
+/**
+* \brief Sets key policy strcuture with initial value.
+* \retval                   /p cy_p64_psa_key_policy_s structure
+*/
 static inline struct cy_p64_psa_key_policy_s cy_p64_psa_key_policy_init( void )
 {
     const struct cy_p64_psa_key_policy_s v = CY_P64_PSA_KEY_POLICY_INIT;
     return( v );
 }
+/** \} */
 
 /** \cond INTERNAL */
 struct cy_p64_psa_cipher_operation_s
@@ -146,9 +154,13 @@ static inline struct cy_p64_psa_key_derivation_s cy_p64_psa_key_derivation_opera
 /** \endcond */
 /** \} */
 
+/** \addtogroup attributes
+ * \{
+ */
+
 /**
  * The type used internally for key sizes.
- * Public interfaces use size_t, but internally we use a smaller type. 
+ * Public interfaces use size_t, but internally we use a smaller type.
  */
 typedef uint16_t cy_p64_psa_key_bits_t;
 
@@ -167,7 +179,7 @@ typedef uint16_t cy_p64_psa_key_bits_t;
  */
 #define CY_P64_PSA_MAX_KEY_BITS     0xfff8U
 
-/** 
+/**
  * \brief A mask of flags that can be stored in key attributes.
  *
  * This type is also used internally to store flags in slots. Internal
@@ -198,10 +210,6 @@ struct cy_p64_psa_key_attributes_s
 #define CY_P64_PSA_KEY_ID_INIT              (0U)
 /** \endcond */
 
-/** \addtogroup attributes
- * \{
- */
-
 /** The initial value of the core key attributes */
 #define CY_P64_PSA_CORE_KEY_ATTRIBUTES_INIT { CY_P64_PSA_KEY_TYPE_NONE, 0, \
                                               CY_P64_PSA_KEY_LIFETIME_VOLATILE, \
@@ -211,14 +219,22 @@ struct cy_p64_psa_key_attributes_s
 
 /** The initial value of the key attributes */
 #define CY_P64_PSA_KEY_ATTRIBUTES_INIT { CY_P64_PSA_CORE_KEY_ATTRIBUTES_INIT, NULL, 0 }
-/** \} */
 
+/**
+* \brief Sets key attributes strcuture with initial value.
+* \retval                   /p cy_p64_psa_key_attributes_s structure
+*/
 static inline struct cy_p64_psa_key_attributes_s cy_p64_psa_key_attributes_init( void )
 {
     const struct cy_p64_psa_key_attributes_s v = CY_P64_PSA_KEY_ATTRIBUTES_INIT;
     return( v );
 }
 
+/**
+* \brief Sets key ID in key attributes strcuture.
+* \param[in] attributes     Key attributes structure
+* \param[in] id             Key ID
+*/
 static inline void cy_p64_psa_set_key_id(cy_p64_psa_key_attributes_t *attributes,
                                   cy_p64_psa_key_id_t id)
 {
@@ -229,12 +245,22 @@ static inline void cy_p64_psa_set_key_id(cy_p64_psa_key_attributes_t *attributes
     }
 }
 
+/**
+* \brief Gets key ID from key attributes strcuture.
+* \param[in] attributes     Key attributes structure
+* \retval                   Key ID
+*/
 static inline cy_p64_psa_key_id_t cy_p64_psa_get_key_id(
     const cy_p64_psa_key_attributes_t *attributes)
 {
     return( attributes->core.id );
 }
 
+/**
+* \brief Sets key lifetime in key attributes strcuture.
+* \param[in] attributes     Key attributes structure
+* \param[in] lifetime       Key lifetime
+*/
 static inline void cy_p64_psa_set_key_lifetime(cy_p64_psa_key_attributes_t *attributes,
                                         cy_p64_psa_key_lifetime_t lifetime)
 {
@@ -245,39 +271,66 @@ static inline void cy_p64_psa_set_key_lifetime(cy_p64_psa_key_attributes_t *attr
     }
 }
 
+/**
+* \brief Gets key lifetime from key attributes strcuture.
+* \param[in] attributes     Key attributes structure
+* \retval                   Key lifetime
+*/
 static inline cy_p64_psa_key_lifetime_t cy_p64_psa_get_key_lifetime(
     const cy_p64_psa_key_attributes_t *attributes)
 {
     return( attributes->core.lifetime );
 }
 
+/**
+* \brief Sets key usage flags in key attributes strcuture.
+* \param[in] attributes     Key attributes structure
+* \param[in] usage_flags    Key usage flags
+*/
 static inline void cy_p64_psa_set_key_usage_flags(cy_p64_psa_key_attributes_t *attributes,
                                            cy_p64_psa_key_usage_t usage_flags)
 {
     attributes->core.policy.usage = usage_flags;
 }
 
+/**
+* \brief Gets key usage flags from key attributes strcuture.
+* \param[in] attributes     Key attributes structure
+* \retval                   Key usage flags
+*/
 static inline cy_p64_psa_key_usage_t cy_p64_psa_get_key_usage_flags(
     const cy_p64_psa_key_attributes_t *attributes)
 {
     return( attributes->core.policy.usage );
 }
 
+/**
+* \brief Sets key algorithm in key attributes strcuture.
+* \param[in] attributes     Key attributes structure
+* \param[in] alg            Key algorithm
+*/
 static inline void cy_p64_psa_set_key_algorithm(cy_p64_psa_key_attributes_t *attributes,
                                          cy_p64_psa_algorithm_t alg)
 {
     attributes->core.policy.alg = alg;
 }
 
+/**
+* \brief Gets key algorithm from key attributes strcuture.
+* \param[in] attributes     Key attributes structure
+* \retval                   Key algorithm
+*/
 static inline cy_p64_psa_algorithm_t cy_p64_psa_get_key_algorithm(
     const cy_p64_psa_key_attributes_t *attributes)
 {
     return( attributes->core.policy.alg );
 }
 
-/* This function is declared in crypto_extra.h, which comes after this
- * header file, but we need this function here, so repeat the declaration. */
-
+ /**
+ * \brief Sets key type in key attributes strcuture.
+ * \param[in] attributes     Key attributes structure
+ * \param[in] type           Key type
+ */
 static inline void cy_p64_psa_set_key_type(cy_p64_psa_key_attributes_t *attributes,
                                     cy_p64_psa_key_type_t type)
 {
@@ -285,12 +338,22 @@ static inline void cy_p64_psa_set_key_type(cy_p64_psa_key_attributes_t *attribut
     attributes->core.type = type;
 }
 
+/**
+* \brief Gets key type from key attributes strcuture
+* \param[in] attributes     Key attributes structure
+* \retval                   Key type
+*/
 static inline cy_p64_psa_key_type_t cy_p64_psa_get_key_type(
     const cy_p64_psa_key_attributes_t *attributes)
 {
     return( attributes->core.type );
 }
 
+/**
+* \brief Sets key length in bits in key attributes strcuture
+* \param[in] attributes     Key attributes structure
+* \param[in] bits           Key length in bits
+*/
 static inline void cy_p64_psa_set_key_bits(cy_p64_psa_key_attributes_t *attributes,
                                     size_t bits)
 {
@@ -304,10 +367,15 @@ static inline void cy_p64_psa_set_key_bits(cy_p64_psa_key_attributes_t *attribut
     }
 }
 
+/**
+* \brief Gets key length in bits from key attributes strcuture
+* \param[in] attributes     Key attributes structure
+* \retval                   Key length in bits
+*/
 static inline size_t cy_p64_psa_get_key_bits(
     const cy_p64_psa_key_attributes_t *attributes)
 {
     return( attributes->core.bits );
 }
-
+/** \} */
 #endif /* CY_P64_PSA_CRYPTO_STRUCT_H */

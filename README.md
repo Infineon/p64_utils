@@ -56,6 +56,9 @@ CY_P64_HEAP_DATA_SIZE defines the size for a local buffer and can be re-defined 
 
 * [PSoC 64 Secure Boot Wi-Fi BT Pioneer Kit (CY8CKIT-064B0S2-4343W)](http://www.cypress.com/CY8CKIT-064B0S2-4343W)
 * [PSoC 64 Standard Secure - AWS Wi-Fi BT Pioneer Kit (CY8CKIT-064S0S2-4343W) ](http://www.cypress.com/CY8CKIT-064S0S2-4343W)
+* [PSoC 64 Secure Boot BLE Prototyping Kit (CY8CPROTO-064B0S1-BLE) ](http://www.cypress.com/CY8CPROTO-064B0S1-BLE)
+* [PSoC 64 Secure Boot Prototyping Kit (CY8CPROTO-064B0S3) ](http://www.cypress.com/CY8CPROTO-064B0S3)
+* [PSoC 64 Secure Boot Prototyping Kit (CY8CPROTO-064S1-SB) ](http://www.cypress.com/CY8CPROTO-064S1-SB)
 
 ## Quick Start Guide
 
@@ -138,15 +141,33 @@ int main(void)
 ```
 Note: To confirm the CM4 boot image when device is provisioned with policy_multi_CM0_CM4.json policy, set image_id = 16.
 
+## Performance
+PSA Crypto API benchmark for the PSoC64 2M device with the CM0p core frequency set to 50 Mhz:
+
+Algorithm       | Execution time  
+----------------| -------------  
+SHA-256         | 2   ms/10kB payload  
+SHA-256         | 4   ms/100kB payload  
+AES-CBC-128     | 18  ms/10kB payload  
+AES-CBC-256     | 19  ms/10kB payload  
+AES-CTR-128     | 13  ms/10kB payload  
+AES-CTR-256     | 14  ms/10kB payload  
+HMAC-SHA256     | 2   ms/10kB payload  
+ECDSA-secp256r1 | 110 ms/sign  
+ECDSA-secp256r1 | 224 ms/verify  
+ECDSA-secp256r1 | 363 ms/verify (including public key calculation)  
+ECDH-secp256r1  | 137 ms/generate key pair  
+ECDH-secp256r1  | 141 ms/handshake  
+
 ## More information
 The following resources contain more information:
 * [PSoC64 Secure Boot Utilities RELEASE.md](./RELEASE.md)
 * [PSoC64 Secure Boot Utilities API Reference Guide](https://cypresssemiconductorco.github.io/p64_utils/p64_utils_api_reference_manual/html/index.html)
-* [PSoC® 64 Secure MCU Secure Boot SDK User Guide](https://www.cypress.com/documentation/software-and-drivers/psoc-64-secure-mcu-secure-boot-sdk-user-guide)
-* [PSoC® 64 Microcontrollers](https://www.cypress.com/products/psoc-64-microcontrollers-arm-cortex-m4m0)
+* [PSoC 64 Secure MCU Secure Boot SDK User Guide](https://www.cypress.com/documentation/software-and-drivers/psoc-64-secure-mcu-secure-boot-sdk-user-guide)
+* [PSoC 64 Microcontrollers](https://www.cypress.com/products/psoc-64-microcontrollers-arm-cortex-m4m0)
 * [ModusToolbox Software Environment, Quick Start Guide, Documentation, and Videos](https://www.cypress.com/products/modustoolbox-software-environment)
 * [Cypress Semiconductor](http://www.cypress.com)
 
 
 ---
-© Cypress Semiconductor Corporation, 2019-2021.
+© Cypress Semiconductor Corporation (an Infineon company), 2019-2022.

@@ -189,11 +189,21 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">jwt_packet</td><td>The pointer to the JWT packet. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">json_packet</td><td>Outputs the JSON object that contains the JWT payload. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">json_packet</td><td>Outputs the JSON object that contains the JWT payload.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__syscall__macros.html#ga3f4d7112a86369c6933e46f3dbad09e0">CY_P64_SUCCESS</a> if success, errorcode otherwise. </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname"><a class="el" href="group__syscall__macros.html#ga3f4d7112a86369c6933e46f3dbad09e0" title="Success operation. ">CY_P64_SUCCESS</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#ga22bd6e7411dbd4ab7a8afc6dab98a758" title="The parameters passed to the function are invalid. ">CY_P64_JWT_ERR_INVALID_PARAMETER</a></td><td>This error code is returned, if <code>json_packet</code> is a null pointer. </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#gaadccfcb254ebc2e6a84e26a3325b52b1" title="Memory allocation for JSON string has failed. ">CY_P64_JWT_ERR_MALLOC_FAIL</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#ga019ef9187049cd649b5e25f8fc839ce6" title="Base64 decoding of JWT packet body has failed. ">CY_P64_JWT_ERR_B64DECODE_FAIL</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#ga5aea365c67764007288e1e940ef1b72d" title="JSON parse has failed. ">CY_P64_JWT_ERR_JSN_PARSE_FAIL</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#gadb1fce888378fc632101532d66e18a0b" title="An error occurred that does not correspond to any defined failure cause. ">CY_P64_JWT_ERR_OTHER</a></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -228,11 +238,18 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">json</td><td>JSON object. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">value</td><td>The pointer to the BOOLEAN value. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">value</td><td>The pointer to the BOOLEAN value.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__syscall__macros.html#ga3f4d7112a86369c6933e46f3dbad09e0">CY_P64_SUCCESS</a> if success, errorcode otherwise. </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname"><a class="el" href="group__syscall__macros.html#ga3f4d7112a86369c6933e46f3dbad09e0" title="Success operation. ">CY_P64_SUCCESS</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#ga22bd6e7411dbd4ab7a8afc6dab98a758" title="The parameters passed to the function are invalid. ">CY_P64_JWT_ERR_INVALID_PARAMETER</a></td><td>This error code is returned, if <code>value</code> is a null pointer. </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#gad57f7dc416c41de97b3c6ac9a6e30495" title="Invalid type of JSON object. ">CY_P64_JWT_ERR_JSN_WRONG_TYPE</a></td><td>This error code is returned, if JSON object type is not boolean. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -267,11 +284,18 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">json</td><td>JSON object. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">value</td><td>The pointer to the unsigned INTEGER value. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">value</td><td>The pointer to the unsigned INTEGER value.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__syscall__macros.html#ga3f4d7112a86369c6933e46f3dbad09e0">CY_P64_SUCCESS</a> if success, errorcode otherwise. </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname"><a class="el" href="group__syscall__macros.html#ga3f4d7112a86369c6933e46f3dbad09e0" title="Success operation. ">CY_P64_SUCCESS</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#ga22bd6e7411dbd4ab7a8afc6dab98a758" title="The parameters passed to the function are invalid. ">CY_P64_JWT_ERR_INVALID_PARAMETER</a></td><td>This error code is returned, if <code>value</code> is a null pointer. </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#gad57f7dc416c41de97b3c6ac9a6e30495" title="Invalid type of JSON object. ">CY_P64_JWT_ERR_JSN_WRONG_TYPE</a></td><td>This error code is returned, if JSON object type is not an integer. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -306,11 +330,18 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">json</td><td>The JSON object. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">value</td><td>The pointer to the STRING value. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">value</td><td>The pointer to the STRING value.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__syscall__macros.html#ga3f4d7112a86369c6933e46f3dbad09e0">CY_P64_SUCCESS</a> if success, errorcode otherwise. </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname"><a class="el" href="group__syscall__macros.html#ga3f4d7112a86369c6933e46f3dbad09e0" title="Success operation. ">CY_P64_SUCCESS</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#ga22bd6e7411dbd4ab7a8afc6dab98a758" title="The parameters passed to the function are invalid. ">CY_P64_JWT_ERR_INVALID_PARAMETER</a></td><td>This error code is returned, if <code>value</code> is a null pointer. </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#gad57f7dc416c41de97b3c6ac9a6e30495" title="Invalid type of JSON object. ">CY_P64_JWT_ERR_JSN_WRONG_TYPE</a></td><td>This error ocde is returned, if JSON object type is not a string. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -359,11 +390,18 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">json</td><td>The JSON object. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">buf</td><td>The pointer to the buffer where to store the content. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>The available size of the buffer in bytes. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">olen</td><td>The actual size used in the buffer in bytes. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">olen</td><td>The actual size used in the buffer in bytes.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__syscall__macros.html#ga3f4d7112a86369c6933e46f3dbad09e0">CY_P64_SUCCESS</a> if success, errorcode otherwise. </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname"><a class="el" href="group__syscall__macros.html#ga3f4d7112a86369c6933e46f3dbad09e0" title="Success operation. ">CY_P64_SUCCESS</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#ga22bd6e7411dbd4ab7a8afc6dab98a758" title="The parameters passed to the function are invalid. ">CY_P64_JWT_ERR_INVALID_PARAMETER</a></td><td>This error code is returned, if <code>buf</code> is a null pointer. </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#gad57f7dc416c41de97b3c6ac9a6e30495" title="Invalid type of JSON object. ">CY_P64_JWT_ERR_JSN_WRONG_TYPE</a></td><td>This error code is returned, if JSON object is not an array or it contains values other than integer or None. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -404,11 +442,20 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">json</td><td>The JSON object with a policy to check. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">image_id</td><td>The image ID. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">json_image</td><td>Output JSON object that contains image configuration. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">json_image</td><td>Output JSON object that contains image configuration.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__syscall__macros.html#ga3f4d7112a86369c6933e46f3dbad09e0">CY_P64_SUCCESS</a> if success, errorcode otherwise. </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname"><a class="el" href="group__syscall__macros.html#ga3f4d7112a86369c6933e46f3dbad09e0" title="Success operation. ">CY_P64_SUCCESS</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#ga22bd6e7411dbd4ab7a8afc6dab98a758" title="The parameters passed to the function are invalid. ">CY_P64_JWT_ERR_INVALID_PARAMETER</a></td><td>This error code is returned, if <code>json_image</code> is a null pointer. </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#ga0d13be24d71aeb7ca8c5607e33fe7af6" title="JSON does not contain requested item. ">CY_P64_JWT_ERR_JSN_NONOBJ</a></td><td>This error is returned, if JSON does not contain "boot_upgrade/firmware" array </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#gad57f7dc416c41de97b3c6ac9a6e30495" title="Invalid type of JSON object. ">CY_P64_JWT_ERR_JSN_WRONG_TYPE</a></td><td>This error is returned, if "boot_upgrade/firmware" object type is not an array </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__syscall__macros.html#ga94f84982017d9331bc96d65b941eb02b" title="The fail status of the Secure FlashBoot return value. ">CY_P64_INVALID</a></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -464,11 +511,20 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">image_id</td><td>The image ID. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">image_type</td><td>The image type: "BOOT", "UPGRADE" or other. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">address</td><td>Output image address. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">size</td><td>Output image size. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">size</td><td>Output image size.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__syscall__macros.html#ga3f4d7112a86369c6933e46f3dbad09e0">CY_P64_SUCCESS</a> if success, errorcode otherwise. </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname"><a class="el" href="group__syscall__macros.html#ga3f4d7112a86369c6933e46f3dbad09e0" title="Success operation. ">CY_P64_SUCCESS</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#ga22bd6e7411dbd4ab7a8afc6dab98a758" title="The parameters passed to the function are invalid. ">CY_P64_JWT_ERR_INVALID_PARAMETER</a></td><td>This error code is returned, if <code>address</code> or <code>size</code> is a null pointer. </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#ga0d13be24d71aeb7ca8c5607e33fe7af6" title="JSON does not contain requested item. ">CY_P64_JWT_ERR_JSN_NONOBJ</a></td><td>This error is returned, if JSON does not contain "resources" array </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#gad57f7dc416c41de97b3c6ac9a6e30495" title="Invalid type of JSON object. ">CY_P64_JWT_ERR_JSN_WRONG_TYPE</a></td><td>This error is returned, if "resources" object type is not an array </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#ga5aea365c67764007288e1e940ef1b72d" title="JSON parse has failed. ">CY_P64_JWT_ERR_JSN_PARSE_FAIL</a></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -525,13 +581,19 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">wdt_enable</td><td>An optional output wdt_enable config. If the set image needs to configure WDT before launching the next image. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">wdt_timeout</td><td>WDT timeout value config used for WDT configuration if wdt_enable is set. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">set_img_ok</td><td>Optional Image Ok config. When it is set to "true"<ul>
-<li>CM0 pre-build image confirms image ok status in image trailer by calling <a class="el" href="group__image__api.html#ga3bfe565822d179bc42d4bfd88020609b" title="Writes the Image OK flag to the slot trailer, so CypressBootloader will not revert the new image...">cy_p64_confirm_image()</a> API, otherwise the user application needs to call this function after a successful boot. </li>
+<li>CM0 pre-build image confirms image ok status in image trailer by calling <a class="el" href="group__image__api.html#ga3bfe565822d179bc42d4bfd88020609b" title="Writes the Image OK flag to the slot trailer, so CypressBootloader will not revert the new image...">cy_p64_confirm_image()</a> API, otherwise the user application needs to call this function after a successful boot.</li>
 </ul>
 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="group__syscall__macros.html#ga3f4d7112a86369c6933e46f3dbad09e0">CY_P64_SUCCESS</a> if success, errorcode otherwise. </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname"><a class="el" href="group__syscall__macros.html#ga3f4d7112a86369c6933e46f3dbad09e0" title="Success operation. ">CY_P64_SUCCESS</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__jwt__policy__error.html#ga5aea365c67764007288e1e940ef1b72d" title="JSON parse has failed. ">CY_P64_JWT_ERR_JSN_PARSE_FAIL</a></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

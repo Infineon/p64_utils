@@ -1,0 +1,25 @@
+var group__psacrypto__error =
+[
+    [ "CY_P64_PSA_ERROR", "group__psacrypto__error.html#ga5d0312f547c2b122fe91a0c29d6e322f", null ],
+    [ "CY_P64_PSA_SUCCESS", "group__psacrypto__error.html#gabf57808e9787a7f482bdfc8a1b377685", null ],
+    [ "CY_P64_PSA_ERROR_GENERIC_ERROR", "group__psacrypto__error.html#ga812e85443afb30b30993162d92c88cbf", null ],
+    [ "CY_P64_PSA_ERROR_NOT_SUPPORTED", "group__psacrypto__error.html#ga0acb01b82422b2aef20c543f38622bf2", null ],
+    [ "CY_P64_PSA_ERROR_NOT_PERMITTED", "group__psacrypto__error.html#ga489bed3982ecce165e0524e5debb9fd0", null ],
+    [ "CY_P64_PSA_ERROR_BUFFER_TOO_SMALL", "group__psacrypto__error.html#ga0a9809dee3cc1aa571a472880be73201", null ],
+    [ "CY_P64_PSA_ERROR_ALREADY_EXISTS", "group__psacrypto__error.html#ga6d39973d1c650223f9b8d631900c55d8", null ],
+    [ "CY_P64_PSA_ERROR_DOES_NOT_EXIST", "group__psacrypto__error.html#ga530617dd510f318835f43bab00e9cf46", null ],
+    [ "CY_P64_PSA_ERROR_BAD_STATE", "group__psacrypto__error.html#gae5c7844defdf120d28efb745183538b9", null ],
+    [ "CY_P64_PSA_ERROR_INVALID_ARGUMENT", "group__psacrypto__error.html#ga1c798809ceb7c9e0fb4da0c2adfdd34c", null ],
+    [ "CY_P64_PSA_ERROR_INSUFFICIENT_MEMORY", "group__psacrypto__error.html#gaa209f7289e4f7ccf07c693e99638e0c3", null ],
+    [ "CY_P64_PSA_ERROR_INSUFFICIENT_STORAGE", "group__psacrypto__error.html#gacfc611f3ea71b4432dcb8b39cc3b9a45", null ],
+    [ "CY_P64_PSA_ERROR_COMMUNICATION_FAILURE", "group__psacrypto__error.html#ga90493ef15f5b8e005f8d9ec1cf5d28a2", null ],
+    [ "CY_P64_PSA_ERROR_STORAGE_FAILURE", "group__psacrypto__error.html#ga4968b5ad5c87add717f57c5e018cd4e5", null ],
+    [ "CY_P64_PSA_ERROR_HARDWARE_FAILURE", "group__psacrypto__error.html#gaa48736089fd7ef40a370948e6e2160da", null ],
+    [ "CY_P64_PSA_ERROR_CORRUPTION_DETECTED", "group__psacrypto__error.html#gaee7005bec37e7c8b61cf07800c8252ff", null ],
+    [ "CY_P64_PSA_ERROR_INSUFFICIENT_ENTROPY", "group__psacrypto__error.html#ga1cb05698d52a61c151eda07c94bc7111", null ],
+    [ "CY_P64_PSA_ERROR_INVALID_SIGNATURE", "group__psacrypto__error.html#gab49ea7a3f238b8c5f37fe04d89543d70", null ],
+    [ "CY_P64_PSA_ERROR_INVALID_PADDING", "group__psacrypto__error.html#ga8abbdd01d971be3c4758d512138d522e", null ],
+    [ "CY_P64_PSA_ERROR_INSUFFICIENT_DATA", "group__psacrypto__error.html#ga6e37a5bc14d34060b0be8fce31ce7d4a", null ],
+    [ "CY_P64_PSA_ERROR_INVALID_HANDLE", "group__psacrypto__error.html#ga179d52d2be9a5dcd9c1f3dc71f2b71a5", null ],
+    [ "cy_p64_psa_status_t", "group__psacrypto__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a", null ]
+];

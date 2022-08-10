@@ -2,6 +2,8 @@ var group__import__export =
 [
     [ "cy_p64_psa_key_handle_t", "group__import__export.html#ga9ab16c7405b7975390450a98240611d2", null ],
     [ "cy_p64_key_slot_t", "group__import__export.html#ga5078048b65cbe5cb22b8cc725f048a57", null ],
+    [ "cy_p64_psa_destroy_key", "group__import__export.html#gadfc86f433236d285f952ef0cab265c54", null ],
+    [ "cy_p64_psa_generate_key", "group__import__export.html#ga93ee3c9c700505b08fc93c2136210fb7", null ],
     [ "cy_p64_psa_import_key", "group__import__export.html#ga7999832dd9a8e2be45df12dcb54e67c2", null ],
     [ "cy_p64_psa_get_key_attributes", "group__import__export.html#gacf498120967cfa9a4fcbcbe39921f750", null ],
     [ "cy_p64_psa_export_key", "group__import__export.html#gaaa8a55113a8b51c8e1ce5b688eb5048b", null ],

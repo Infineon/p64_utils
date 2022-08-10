@@ -4,7 +4,7 @@ var group__psacrypto =
     [ "Cipher operations", "group__cipher__operations.html", "group__cipher__operations" ],
     [ "Data size definitions", "group__constants__sizes.html", "group__constants__sizes" ],
     [ "Key and algorithm types", "group__crypto__types.html", "group__crypto__types" ],
-    [ "Error codes", "group__error.html", "group__error" ],
+    [ "Error codes", "group__psacrypto__error.html", "group__psacrypto__error" ],
     [ "Hash operations", "group__hash__operations.html", "group__hash__operations" ],
     [ "Key import and export", "group__import__export.html", "group__import__export" ],
     [ "Key derivation", "group__key__derivation.html", "group__key__derivation" ],

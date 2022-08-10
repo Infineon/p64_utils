@@ -1,13 +1,13 @@
 /***************************************************************************//**
 * \file cy_p64_syscall.h
-* \version 1.0
+* \version 1.0.1
 *
 * \brief
 * This is the header file for low-level syscall functions.
 *
 ********************************************************************************
 * \copyright
-* Copyright 2021, Cypress Semiconductor Corporation (an Infineon company).
+* Copyright 2021-2022, Cypress Semiconductor Corporation (an Infineon company).
 * All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
@@ -122,6 +122,8 @@ typedef uint32_t cy_p64_error_codes_t;
 #define CY_P64_INVALID_TIMEOUT           (0xF8000100U)
 /** Returned when invalid output parameter passed to API */
 #define CY_P64_INVALID_OUT_PAR           (0xF8000101U)
+/** Returned when not supported API opcode passed to the syscall */
+#define CY_P64_INVALID_OPCODE            (0xF000000Bu)
 
 /** \} */
 

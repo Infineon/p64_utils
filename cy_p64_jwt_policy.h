@@ -1,13 +1,13 @@
 /***************************************************************************//**
 * \file cy_p64_jwt_policy.h
-* \version 1.0
+* \version 1.0.1
 *
 * \brief
 * This is the header file for the JWT policy parsing and processing.
 *
 ********************************************************************************
 * \copyright
-* Copyright 2021, Cypress Semiconductor Corporation (an Infineon company).
+* Copyright 2021-2022, Cypress Semiconductor Corporation (an Infineon company).
 * All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
@@ -23,21 +23,29 @@
 #include "cy_p64_syscall.h"
 #include "cy_p64_cJSON.h"
 
-
-/** Error codes for policy processing functions */
-#define CY_P64_JWT_ERR_JKEY_NOT_FOUND           (0xF8000001U)
+/** \addtogroup jwt_policy_error
+ * @{
+ */
+/* Error codes for policy processing functions */
+/** JSON does not contain requested item */
 #define CY_P64_JWT_ERR_JSN_NONOBJ               (0xF8000002U)
+/** Invalid type of JSON object */
 #define CY_P64_JWT_ERR_JSN_WRONG_TYPE           (0xF8000003U)
-#define CY_P64_JWT_ERR_JWT_PACKET_PARSE         (0xF8000004U)
-#define CY_P64_JWT_ERR_JSN_BIG_NESTING          (0xF8000005U)
+/** JSON parse has failed */
 #define CY_P64_JWT_ERR_JSN_PARSE_FAIL           (0xF8000006U)
+/** Base64 decoding of JWT packet body has failed */
 #define CY_P64_JWT_ERR_B64DECODE_FAIL           (0xF8000007U)
-#define CY_P64_JWT_ERR_JWT_TOO_BIG              (0xF8000008U)
+/** Invalid JWT packet format
+*
+* This error is returned if header and/or signature has not been found in JWT packet. */
 #define CY_P64_JWT_ERR_JWT_BROKEN_FORMAT        (0xF8000009U)
+/** Memory allocation for JSON string has failed */
 #define CY_P64_JWT_ERR_MALLOC_FAIL              (0xF800000AU)
+/** An error occurred that does not correspond to any defined failure cause */
 #define CY_P64_JWT_ERR_OTHER                    (0xF800000BU)
+/** The parameters passed to the function are invalid */
 #define CY_P64_JWT_ERR_INVALID_PARAMETER        (0xF800000CU)
-
+/**@}*/
 
 /* Public API */
 cy_p64_error_codes_t cy_p64_decode_payload_data(const char *jwt_packet, cy_p64_cJSON **json_packet);

@@ -1,13 +1,13 @@
 /***************************************************************************//**
 * \file cy_p64_syscalls.c
-* \version 1.0
+* \version 1.0.1
 *
 * \brief
 * This is the source code file for syscall functions.
 *
 ********************************************************************************
 * \copyright
-* Copyright 2021, Cypress Semiconductor Corporation (an Infineon company).
+* Copyright 2021-2022, Cypress Semiconductor Corporation (an Infineon company).
 * All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions,
 * disclaimers, and limitations in the end user license agreement accompanying
@@ -32,15 +32,16 @@
 
 #include <string.h>
 #include "cy_p64_syscalls.h"
+#include "cy_p64_jwt_policy.h"
 
 
 /** AcquireResponse Syscall opcode */
 #define CY_P64_SYSCALL_OPCODE_ACQUIRE_RESP          (0x32UL << 24U)
-/** PSA crypto SysCall opcodes */
+/** PSA crypto SysCall opcode */
 #define CY_P64_SYSCALL_OPCODE_PSA_CRYPTO            (0x35UL << 24U)
-/** Roll Back counter SysCall opcodes */
+/** Roll Back counter SysCall opcode */
 #define CY_P64_SYSCALL_OPCODE_ROLL_BACK_COUNTER     (0x36UL << 24U)
-/** Get Provision details SysCall opcodes */
+/** Get Provision details SysCall opcode */
 #define CY_P64_SYSCALL_OPCODE_GET_PROV_DETAILS      (0x37UL << 24U)
 /** DAP Control SysCall opcode */
 #define CY_P64_SYSCALL_OPCODE_DAP_CONTROL           (0x3AUL << 24U)
@@ -52,6 +53,92 @@
 
 #define CY_P64_ROLL_BACK_COUNTER_READ               (0UL)
 #define CY_P64_ROLL_BACK_COUNTER_WRITE              (1UL)
+
+
+/*******************************************************************************
+* Function Name: cy_p64_get_certificate
+****************************************************************************//**
+* Parses chain_of_trust token and returns pointer to particular certificate.
+* Note that function allocates buffer for parsed token when cert_buff != NULL and
+*  free it after following function call with input parameters equal to NULL.
+*
+* \param chain_of_trust JSON provisioning packet (0 terminated).
+* \param cert_buff      The buffer where certificate will be copied.
+* \param cert_len       The length of certBuffLen buffer.
+* \param certificate_id ID of the requested certificate.
+* \retval #CY_P64_SUCCESS
+* \retval #CY_P64_JWT_ERR_JSN_PARSE_FAIL
+* \retval #CY_P64_JWT_ERR_JSN_NONOBJ
+*
+*******************************************************************************/
+static cy_p64_error_codes_t cy_p64_get_certificate(const char *chain_of_trust, char **cert_buff, uint32_t *cert_len, uint32_t certificate_id)
+{
+    cy_p64_error_codes_t rc = CY_P64_JWT_ERR_JSN_PARSE_FAIL;
+    static cy_p64_cJSON *json_parent = NULL;
+    cy_p64_cJSON *json;
+    char *cert_str = NULL;
+
+    /* Free previously allocated buffers */
+    if(json_parent != NULL)
+    {
+        cy_p64_cJSON_Delete(json_parent);
+        json_parent = NULL;
+    }
+
+    if((cert_buff == NULL) && (cert_len == NULL))
+    {
+        rc = CY_P64_SUCCESS;    /* Just free static buffer without parsing */
+    }
+    else
+    {
+        json_parent = cy_p64_cJSON_Parse(chain_of_trust);
+        if(json_parent != NULL)
+        {
+            json = json_parent;
+            if(json->type == CY_P64_cJSON_Array)
+            {
+                json = json->child;
+                while((certificate_id > 0u) && (json != NULL))
+                {
+                    json = json->next;
+                    certificate_id--;
+                }
+            }
+            if((json != NULL) && (certificate_id == 0u))
+            {
+                if(json->type == CY_P64_cJSON_String)
+                {
+                    cert_str = json->valuestring;
+                }
+            }
+            if(cert_str != NULL)
+            {
+                if(cert_len != NULL)
+                {
+                    *cert_len = strlen(cert_str);
+                }
+                if(cert_buff != NULL)
+                {
+                    *cert_buff = cert_str;
+                }
+                rc = CY_P64_SUCCESS;
+            }
+            else
+            {
+                rc = CY_P64_JWT_ERR_JSN_NONOBJ;
+            }
+            /* Free json_parent only when response string is not requested */
+            if(cert_buff == NULL)
+            {
+                cy_p64_cJSON_Delete(json_parent);
+                json_parent = NULL;
+            }
+        }
+    }
+
+    return rc;
+}
+
 
 /** \addtogroup syscalls_api
  * \{
@@ -66,13 +153,16 @@
 *
 * \param[in] id: Item id (provisioning packet, templates or public keys):
 *             * 0 to 32 - Key slot in SFB Mbed Crypto Key Storage
-*             * 0x100 - FB_POLICY_JWT
-*             * 0x101 - FB_POLICY_TEMPL_BOOT
-*             * 0x102 - FB_POLICY_TEMPL_DEBUG
-*             * 0x2xx - FB_POLICY_CERTIFICATE, where xx is a certificate index in
+*             * 0x100 - CY_P64_POLICY_JWT
+*             * 0x101 - CY_P64_POLICY_TEMPL_BOOT
+*             * 0x102 - CY_P64_POLICY_TEMPL_DEBUG
+*             * 0x2xx - CY_P64_POLICY_CERTIFICATE, where xx is a certificate index in
 *                       the "chain_of_trust" array of the provisioned packet.
-*             * 0x300 - FB_POLICY_IMG_CERTIFICATE
-* \param[out] ptr: The pointer to the response string.
+*                       Note that when the function is called with this parameter it allocates buffer for the certificate.
+*                       the buffer is free/reused on the following call for read certificate.
+*                       To free the buffer explicitly call this function again with ptr=NULL and len=NULL.
+*             * 0x300 - CY_P64_POLICY_IMG_CERTIFICATE
+* \param[out] ptr: The pointer to the response string. Can be NULL to read 'len' only.
 * \param[out] len: The length of the response string.
 *
 * \return     \ref CY_P64_SUCCESS for success or error code
@@ -83,10 +173,13 @@ cy_p64_error_codes_t cy_p64_get_provisioning_details(uint32_t id, char **ptr, ui
     cy_p64_error_codes_t status = CY_P64_INVALID;
     uint32_t syscall_cmd[2];
     uint32_t syscall_param[2];
+    uint32_t sfb_ver = _FLD2VAL(CY_P64_SFB_VERSION, CY_GET_REG32(CY_P64_SFB_VERSION_ADDR));
 
-    if(ptr == NULL)
+    if(((id & ~CY_P64_POLICY_CERT_INDEX_MASK) == CY_P64_POLICY_CERTIFICATE) &&
+       (sfb_ver == CY_P64_SFB_VERSION_RELEASE))
     {
-        status = CY_P64_INVALID_OUT_PAR;
+        /* Workaround for memory leakage in the released version of Secure FlashBoot which is fixed in the following version */
+        status = cy_p64_get_certificate((const char *)CY_P64_CHAIN_OF_TRUST_ADDR, ptr, len, id & CY_P64_POLICY_CERT_INDEX_MASK);
     }
     else
     {
@@ -98,9 +191,12 @@ cy_p64_error_codes_t cy_p64_get_provisioning_details(uint32_t id, char **ptr, ui
 
         status = cy_p64_syscall(syscall_cmd);
 
-        if(CY_P64_SUCCESS == status)
+        if(status == CY_P64_SUCCESS)
         {
-            *ptr = (char *)syscall_param[1];
+            if(ptr != NULL)
+            {
+                *ptr = (char *)syscall_param[1];
+            }
             if(len != NULL)
             {
                 *len = syscall_param[0];

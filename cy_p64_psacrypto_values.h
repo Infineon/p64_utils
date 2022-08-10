@@ -13,7 +13,7 @@
  *
  * This header file only defines preprocessor macros.
  *
- * Copyright 2019-2021 Cypress Semiconductor Corporation (an Infineon company)
+ * Copyright 2019-2022 Cypress Semiconductor Corporation (an Infineon company)
  *
  */
 /*
@@ -38,7 +38,7 @@
 
 #include "cy_p64_syscall.h"
 
-/** \addtogroup error
+/** \addtogroup psacrypto_error
  * @{
  */
 
@@ -489,6 +489,9 @@
 
 /** SECP160R2 (SEC2 v1, obsolete) */
 #define CY_P64_PSA_ECC_FAMILY_SECP_R2           ((cy_p64_psa_ecc_family_t) 0x1b)
+
+/** Size-specific elliptic curve. */
+#define CY_P64_PSA_ECC_CURVE_SECP256R1          (CY_P64_PSA_ECC_FAMILY_SECP_R1)
 
 /** SEC Koblitz curves over binary fields.
  *
@@ -1822,8 +1825,5 @@
 #define CY_P64_PSA_KEY_DERIVATION_INPUT_SEED       ((cy_p64_psa_key_derivation_step_t)0x0204)
 
 /**@}*/
-
-/** Size-specific elliptic curve. */
-#define CY_P64_PSA_ECC_CURVE_SECP256R1          (CY_P64_PSA_ECC_FAMILY_SECP_R1)
 
 #endif /* CY_P64_CY_P64_PSA_CRYPTO_VALUES_H */

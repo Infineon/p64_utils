@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('group__random.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga7b5eb4e37667f453f912f51963bfbf49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__random.html#ga7b5eb4e37667f453f912f51963bfbf49">cy_p64_psa_generate_random</a> (uint8_t *output, size_t output_size)</td></tr>
+<tr class="memitem:ga7b5eb4e37667f453f912f51963bfbf49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__psacrypto__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__random.html#ga7b5eb4e37667f453f912f51963bfbf49">cy_p64_psa_generate_random</a> (uint8_t *output, size_t output_size)</td></tr>
 <tr class="memdesc:ga7b5eb4e37667f453f912f51963bfbf49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates random bytes.  <a href="#ga7b5eb4e37667f453f912f51963bfbf49">More...</a><br /></td></tr>
 <tr class="separator:ga7b5eb4e37667f453f912f51963bfbf49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -102,7 +102,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a> cy_p64_psa_generate_random </td>
+          <td class="memname"><a class="el" href="group__psacrypto__error.html#gae79cfe5e478f111f9f93e5d7e69d5e2a">cy_p64_psa_status_t</a> cy_p64_psa_generate_random </td>
           <td>(</td>
           <td class="paramtype">uint8_t *&#160;</td>
           <td class="paramname"><em>output</em>, </td>
@@ -122,8 +122,8 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Generates random bytes. </p>
-<dl class="section warning"><dt>Warning</dt><dd>This function <b>can</b> fail! Callers MUST check the return status and MUST NOT use the content of the output buffer if the return status is not <a class="el" href="group__error.html#gabf57808e9787a7f482bdfc8a1b377685" title="The action was completed successfully. ">CY_P64_PSA_SUCCESS</a>.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>To generate a key, use cy_p64_psa_generate_key() instead.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>This function <b>can</b> fail! Callers MUST check the return status and MUST NOT use the content of the output buffer if the return status is not <a class="el" href="group__psacrypto__error.html#gabf57808e9787a7f482bdfc8a1b377685" title="The action was completed successfully. ">CY_P64_PSA_SUCCESS</a>.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>To generate a key, use <a class="el" href="group__import__export.html#ga93ee3c9c700505b08fc93c2136210fb7" title="Generates a key or key pair. ">cy_p64_psa_generate_key()</a> instead.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">output</td><td>The output buffer for the generated data. </td></tr>
@@ -133,14 +133,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
-    <tr><td class="paramname"><a class="el" href="group__error.html#gabf57808e9787a7f482bdfc8a1b377685" title="The action was completed successfully. ">CY_P64_PSA_SUCCESS</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#ga0acb01b82422b2aef20c543f38622bf2" title="The requested operation or a parameter is not supported by this implementation. ">CY_P64_PSA_ERROR_NOT_SUPPORTED</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#ga1cb05698d52a61c151eda07c94bc7111" title="There is not enough entropy to generate random data needed for the requested action. ">CY_P64_PSA_ERROR_INSUFFICIENT_ENTROPY</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#gaa209f7289e4f7ccf07c693e99638e0c3" title="There is not enough runtime memory. ">CY_P64_PSA_ERROR_INSUFFICIENT_MEMORY</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#ga90493ef15f5b8e005f8d9ec1cf5d28a2" title="There was a communication failure inside the implementation. ">CY_P64_PSA_ERROR_COMMUNICATION_FAILURE</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#gaa48736089fd7ef40a370948e6e2160da" title="A hardware failure was detected. ">CY_P64_PSA_ERROR_HARDWARE_FAILURE</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#gaee7005bec37e7c8b61cf07800c8252ff" title="A tampering attempt was detected. ">CY_P64_PSA_ERROR_CORRUPTION_DETECTED</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="group__error.html#gae5c7844defdf120d28efb745183538b9" title="The requested action cannot be performed in the current state. ">CY_P64_PSA_ERROR_BAD_STATE</a></td><td>It is implementation-dependent whether initialize results fails in this error code. </td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gabf57808e9787a7f482bdfc8a1b377685" title="The action was completed successfully. ">CY_P64_PSA_SUCCESS</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga0acb01b82422b2aef20c543f38622bf2" title="The requested operation or a parameter is not supported by this implementation. ">CY_P64_PSA_ERROR_NOT_SUPPORTED</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga1cb05698d52a61c151eda07c94bc7111" title="There is not enough entropy to generate random data needed for the requested action. ">CY_P64_PSA_ERROR_INSUFFICIENT_ENTROPY</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gaa209f7289e4f7ccf07c693e99638e0c3" title="There is not enough runtime memory. ">CY_P64_PSA_ERROR_INSUFFICIENT_MEMORY</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#ga90493ef15f5b8e005f8d9ec1cf5d28a2" title="There was a communication failure inside the implementation. ">CY_P64_PSA_ERROR_COMMUNICATION_FAILURE</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gaa48736089fd7ef40a370948e6e2160da" title="A hardware failure was detected. ">CY_P64_PSA_ERROR_HARDWARE_FAILURE</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gaee7005bec37e7c8b61cf07800c8252ff" title="A tampering attempt was detected. ">CY_P64_PSA_ERROR_CORRUPTION_DETECTED</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="group__psacrypto__error.html#gae5c7844defdf120d28efb745183538b9" title="The requested action cannot be performed in the current state. ">CY_P64_PSA_ERROR_BAD_STATE</a></td><td>It is implementation-dependent whether initialize results fails in this error code. </td></tr>
   </table>
   </dd>
 </dl>

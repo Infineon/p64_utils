@@ -8,7 +8,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "group__attributes.html",
-"group__jwt__policy__api.html#ga19aaa54956dbbc7989c3a306bc26eb53"
+"group__jwt__policy__api.html#ga1db5065a2cfc27e47e1866d8da59159c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
